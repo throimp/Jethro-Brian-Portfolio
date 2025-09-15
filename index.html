@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GALARAWAN - Jethro Brian</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #1a1a1a;
+            --yellow: #f8c34f;
+            --white: #ffffff;
+            --light-gray: #c0c0c0; /* New light gray color */
+            --semi-transparent: rgba(255, 255, 255, 0.1);
+            --font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--black);
+            color: var(--white);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- Header Section --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--semi-transparent);
+            position: sticky;
+            top: 0;
+            background-color: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 50;
+        }
+
+        .header-left .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .header-left .logo-img {
+            width: 40px;
+            height: 40px;
+            background-image: url('https://placehold.co/40x40/f8c34f/fff?text=L'); /* Replace with your logo image */
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .header-left .logo-text {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-btn,
+        .about-btn {
+            background-color: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover,
+        .about-btn:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4rem 0;
+            gap: 2rem;
+        }
+
+        .hero-image-container {
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-text-container {
+            text-align: center;
+        }
+
+        .hero-text-container h1 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .hero-text-container .name {
+            color: var(--yellow);
+        }
+
+        .hero-text-container .caption {
+            color: var(--yellow);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            margin-top: 0.5rem;
+        }
+        
+        .hero-text-container p {
+            font-size: 1rem;
+            line-height: 1.5;
+            max-width: 500px;
+            margin: 1.5rem auto;
+            color: var(--light-gray);
+        }
+
+        .hero-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 1.5rem auto;
+            max-width: 500px;
+        }
+
+        .hero-list li {
+            margin-bottom: 0.5rem;
+            color: var(--light-gray);
+        }
+        
+        .my-works-btn {
+            background-color: var(--yellow);
+            color: var(--black);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .my-works-btn:hover {
+            background-color: var(--white);
+        }
+
+        /* --- Works Menu Section --- */
+        .works-menu-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .works-menu-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+.works-menu-section .caption {
+            color: var(--yellow);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .works-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .works-buttons a {
+            background-color: var(--semi-transparent);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            text-align: center;
+        }
+        
+        .works-buttons a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* --- Gallery Section --- */
+        .gallery-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* --- Pages for Buttons --- */
+        .page-content {
+            padding: 4rem 0;
+            min-height: 100vh;
+        }
+
+        .page-content h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--semi-transparent);
+            padding-bottom: 1.5rem;
+        }
+        
+        .page-header-nav .go-back-btn,
+        .page-header-nav .inquiry-btn {
+            background-color: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .page-header-nav .inquiry-btn {
+            background-color: var(--yellow);
+            color: var(--black);
+            border-color: var(--yellow);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+        
+        .social-links a {
+            text-decoration: none;
+            color: var(--white);
+            padding: 0.5rem;
+            border: 1px solid var(--semi-transparent);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .video-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .video-item {
+            background-color: var(--semi-transparent);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .video-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .video-item h3 {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-item p {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+        
+        /* --- Pop-up Modals (Contact & About) --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1000;
+        }
+        
+        .modal.is-visible {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--black);
+            border: 1px solid var(--semi-transparent);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            max-width: 600px;
+            max-height: 90%;
+            overflow-y: auto;
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .modal-content .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+            background: transparent;
+            border: none;
+        }
+
+        .modal-content .contact-links,
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-content .contact-links .link-item,
+        .about-content .about-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--white);
+        }
+        
+        .modal-content .contact-links .link-item {
+            justify-content: center;
+        }
+
+        .about-content {
+            text-align: left;
+            flex-direction: column;
+            gap: 1rem; /* Reduced gap */
+            align-items: center;
+        }
+        
+        .about-content .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+        
+        .about-content p, .about-content h4 {
+            margin: 0;
+        }
+
+        .about-content .profession-title {
+            margin-bottom: 1.5rem;
+            color: var(--yellow);
+        }
+
+        .about-content .section-title {
+            font-weight: 700;
+            color: var(--yellow);
+            margin-top: 0.5rem; /* Reduced margin */
+        }
+        
+        .about-content .about-item img {
+            width: 25px;
+            height: 25px;
+        }
+
+        .about-details-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .about-details-grid .section-group {
+            flex: 1;
+            width: 100%;
+            text-align: left;
+        }
+
+        .about-details-grid .section-title {
+            margin-bottom: 1rem;
+        }
+
+        .about-details-grid ul {
+            list-style: disc; /* Re-enabled bullets */
+            padding-left: 1.5rem; /* Added space before the bullets */
+        }
+        
+        .about-details-grid ul li {
+            margin-bottom: 0.75rem; /* Added space between list items */
+        }
+
+        .about-details-grid li:last-child {
+            margin-bottom: 0; /* No margin on the last item */
+        }
+
+        .about-details-grid a {
+            color: var(--yellow);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .about-details-grid a:hover {
+            color: var(--white);
+        }
+        
+        /* SVG icon styles */
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* --- Desktop Media Queries --- */
+        @media (min-width: 768px) {
+            .hero-section {
+                flex-direction: row;
+                gap: 5rem;
+                text-align: left;
+            }
+
+            .hero-text-container {
+                text-align: left;
+            }
+            
+            .hero-text-container p,
+            .hero-list {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .works-buttons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+            }
+            
+            .works-buttons a {
+                flex: 1;
+                max-width: 300px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+            
+            .page-header-nav {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .social-links {
+                flex-direction: row;
+                margin-top: 0;
+            }
+            
+            .video-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Removed the media query for about-details-grid to keep it as a column on all sizes */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Section: Home Page -->
+    <main id="home-page">
+        <div class="container">
+            <!-- Header -->
+            <header>
+                <div class="header-left">
+                    <a href="#home-page" class="logo">
+                        <div class="logo-img"></div>
+                        <span class="logo-text">GALARAWAN</span>
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button class="about-btn" onclick="openModal('about')">About Me</button>
+                    <button class="contact-btn" onclick="openModal('contact')">Contact Me</button>
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-image-container">
+                    <!-- Replace the src with your hero image -->
+                    <img src="https://placehold.co/1200x1200/4a4a4a/fff?text=Hero" alt="Person" class="hero-image">
+                </div>
+                <div class="hero-text-container">
+                    <h1>HELLO!<br>I'M <span class="name">JETHRO BRIAN</span></h1>
+                    <p class="caption">Creative Director | Video Artist | Colorist | Video Artist | AI-Integrated VFX Artist</p>
+                    <p class="caption">NOW OPEN FOR CREATIVE PROJECTS!</p>
+                    <ul class="hero-list">
+                        <li>• Color grading</li>
+                        <li>• Brand deal shoots</li>
+                        <li>• Graphic design</li>
+                        <li>• Social media content creation</li>
+                        <li>• Effective integration of AI tools in creative workflows</li>
+                        <li>• All-in package – includes concept/story, editing, equipment, and execution</li>
+                    </ul>
+                    <p>Let’s bring ideas to life.</p>
+                    <a href="#works-menu" class="my-works-btn">My Works</a>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Works Menu Section -->
+        <section id="works-menu" class="works-menu-section">
+            <div class="container">
+                <h2>I DARED TO REIMAGINE.</h2>
+                <p class="caption">I was once an assistant cinematographer and editor, and now I’m a creative director. I’ve experienced nearly every role in the field, and that makes me knowledgeable.</p>
+                <div class="works-buttons">
+                    <a href="#brand-deals-page">Brand Deals</a>
+                    <a href="#competition-page">Competition</a>
+                    <a href="#personal-projects-page">Personal Projects</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery-section" class="gallery-section">
+            <div class="container">
+                <h2>Screen Grabs</h2>
+               <p class="caption">My favorite shots from various projects. Color graded and framed by Jethro Brian</p>
+                <div class="gallery-grid">
+                    <!-- Replace src with your own images. Add more gallery-item divs to add more images. At least 30 images recommended. -->
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+1" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+2" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+3" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+4" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+5" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+6" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+7" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+8" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+9" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+10" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+11" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+12" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+13" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+14" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+15" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+16" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+17" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+18" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+19" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+20" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+21" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+22" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+23" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+24" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+25" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+26" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+27" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+28" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+29" alt="Gallery Image"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+30" alt="Gallery Image"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pages for Works Menu (Hidden by default) -->
+    <main class="page-content" id="brand-deals-page" style="display: none;">
+        <div class="container">
+            <h2>BRAND DEALS</h2>
+            <div class="page-header-nav">
+                <a href="#home-page" class="go-back-btn">Go Back</a>
+                <button class="inquiry-btn" onclick="openModal('contact')">Inquiry</button>
+            </div>
+            <div class="video-gallery">
+                <!-- To add a new video, copy and paste the following div block. -->
+                <!-- Make sure to replace the video src, heading, and caption text. -->
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video>
+                    <h3>Project A</h3>
+                    <p>A short caption about this amazing brand deal.</p>
+                </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"></video>
+                    <h3>Project B</h3>
+                    <p>Details about a successful collaboration with a leading brand.</p>
+                </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"></video>
+                    <h3>Project C</h3>
+                    <p>A promotional video for a high-end client.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="page-content" id="competition-page" style="display: none;">
+        <div class="container">
+            <h2>COMPETITION</h2>
+            <div class="page-header-nav">
+                <a href="#home-page" class="go-back-btn">Go Back</a>
+                <button class="inquiry-btn" onclick="openModal('contact')">Inquiry</button>
+            </div>
+            <div class="video-gallery">
+                <!-- To add a new video, copy and paste the following div block. -->
+                <!-- Make sure to replace the video src, heading, and caption text. -->
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"></video>
+                    <h3>Winning Project</h3>
+                    <p>This project won first place in a national competition.</p>
+                </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"></video>
+                    <h3>Finalist Entry</h3>
+                    <p>Our entry for a photography challenge.</p>
+                </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"></video>
+                    <h3>Honorable Mention</h3>
+                    <p>An entry that received special recognition.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="page-content" id="personal-projects-page" style="display: none;">
+        <div class="container">
+            <h2>PERSONAL PROJECTS</h2>
+            <div class="page-header-nav">
+                <a href="#home-page" class="go-back-btn">Go Back</a>
+                <button class="inquiry-btn" onclick="openModal('contact')">Inquiry</button>
+            </div>
+            <div class="video-gallery">
+                <!-- To add a new video, copy and paste the following div block. -->
+                <!-- Make sure to replace the video src, heading, and caption text. -->
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"></video>
+                    <h3>Urban Exploration</h3>
+                    <p>A series of short films exploring city life.</p>
+                </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"></video>
+                    <h3>Nature's Beauty</h3>
+                    <p>Capturing the silent moments of nature.</p>
+                </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"></video>
+                    <h3>Storytelling through Visuals</h3>
+                    <p>A deep dive into narrative cinematography.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Contact Pop-up Modal -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('contact')">&times;</button>
+            <h3>Contact Me</h3>
+            <div class="contact-links">
+                <!-- Instagram Link with Icon -->
+                <a href="https://www.instagram.com/_throimp?igsh=bTNyNjk4Mmt6bzRv&utm_source=qr" target="_blank" class="link-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C7.581 4 4 7.581 4 12C4 16.419 7.581 20 12 20C16.419 20 20 16.419 20 12C20 7.581 16.419 4 12 4ZM12 6C15.314 6 18 8.686 18 12C18 15.314 15.314 18 12 18C8.686 18 6 15.314 6 12C6 8.686 8.686 6 12 6Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 9C10.343 9 9 10.343 9 12C9 13.657 10.343 15 12 15C13.657 15 15 13.657 15 12C15 10.343 13.657 9 12 9ZM12 11C11.448 11 11 11.448 11 12C11 12.552 11.448 13 12 13C12.552 13 13 12.552 13 12C13 11.448 12.552 11 12 11Z" fill="currentColor"/>
+                        <circle cx="16.5" cy="7.5" r="1.5" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 4H6.5C5.12 4 4 5.12 4 6.5V17.5C4 18.88 5.12 20 6.5 20H17.5C18.88 20 20 18.88 20 17.5V6.5C20 5.12 18.88 4 17.5 4ZM6.5 6C6.224 6 6 6.224 6 6.5V17.5C6 17.776 6.224 18 6.5 18H17.5C17.776 18 18 17.776 18 17.5V6.5C18 6.224 17.776 6 17.5 6H6.5Z" fill="currentColor"/>
+                    </svg>
+                    <span>Instagram</span>
+                </a>
+                <!-- Facebook Link with Icon -->
+                <a href="https://www.facebook.com/share/1BNPWaTWby/?mibextid=wwXIfr" target="_blank" class="link-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5 2h-11C5.12 2 4 3.12 4 4.5V19.5C4 20.88 5.12 22 6.5 22H11V14H9V11H11V9C11 7.21 12.05 6 14.24 6C15.29 6 16.03 6.08 16.3 6.13V8.12H15.04C14.1 8.12 13.65 8.57 13.65 9.42V11H16.08L15.65 14H13.65V22H17.5C18.88 22 20 20.88 20 19.5V4.5C20 3.12 18.88 2 17.5 2Z" fill="currentColor"/>
+                    </svg>
+                    <span>Facebook</span>
+                </a>
+                <!-- TikTok Link with Icon -->
+                <a href="https://www.tiktok.com/@_throperio?_t=ZS-8zdujbjLvDl&_r=1" target="_blank" class="link-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2H12.997V10H16.495V13H12.997V18.5C12.997 20.433 11.43 22 9.497 22C7.564 22 6 20.433 6 18.5C6 16.567 7.564 15 9.497 15C10.155 15 10.771 15.176 11.31 15.485V13H9.497C8.12 13 7 11.88 7 10.5V10H9.997V2H12ZM12.997 2H16.495V10H12.997V2Z" fill="currentColor"/>
+                    </svg>
+                    <span>TikTok</span>
+                </a>
+                <!-- Email Link -->
+                
+                    <span>wassupkdot880896@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- About Me Pop-up Modal -->
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('about')">&times;</button>
+            <div class="about-content">
+                <!-- Replace the src with your profile picture -->
+                <img src="https://placehold.co/150x150/4a4a4a/fff?text=Profile" alt="Profile Picture" class="profile-pic">
+                <h3>Jethro Brian D. Imperio</h3>
+                <p class="profession-title">Creative Director | Video Artist | Colorblind Colorist | Cinematographer</p>
+                <div class="about-text">
+                    <p>All my life, I’ve been dictated to what I can do, or what I can only do. But I dared to reimagine. I was once just a dreamer, trying to make it in this field. I tried many times — and failed just as much. But those failures taught me something. They shaped who I am today.</p><br>
+                    <p>I dared to dream.<p> 
+                    <p>I dared to fail. 
+                    <p>I dared to reimagine.</p><br>
+                    <p>I’ve said it once, and I’ll say it again:<p> 
+                    <p> “Life is a constant finding of purpose.”</p>
+                </div>
+                <!-- Aligned Achievements and Skills -->
+                <div class="about-details-grid">
+                    <div class="section-group">
+                        <h4 class="section-title">Achievements/Projects</h4>
+                        <ul>
+                            <li>FILM - Champion, Best Director, Best Cinematography<br><br>Role: Director, Editor, Colorist, Sound design, Cinematographer<br>Event: 2024 University Of Saint Louis - Religious Film Festival<br>Film: KUWADRO(St.Philomena) <br><a href="https://www.facebook.com/share/v/1ViK34LfLj/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
+                            <li>FILM - Best Cinematography & 2nd Best Film<br><br>Role: Cinematographer<br>Event: 2023 University Of Saint Louis - English Month<br>Film: Stroke of Choices(St.Augustine) <br><a href="https://www.facebook.com/share/1EyehtH4C1/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
+                            <li>FILM - Champion<br><br>Role: Cinematographer, Editor<br>Event: 2023 University Of Saint Louis - KWENTO USL by Lente Likha<br>Film: Indak(St.Augustine) <br><a href="https://www.facebook.com/share/17759S62tD/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
+                            <li>TEASER - Champion<br><br>Role: Director, Concept writer, Editor, Cinematographer<br>Event: 2024 University Of Saint Louis - Intramurals<br>Team: Valorous Caves of Tasaday(RED) <br><a href="https://www.facebook.com/share/v/1BC77nke1j/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
+                            <li>TEASER - Champion<br><br>Role: Editor, Cinematographer<br>Event: 2023 University Of Saint Louis - Intramurals<br>Team: Sirin Keepers of Chrysoprase(GREEN) <br><a href="https://www.facebook.com/share/v/1S5VU7aE9e/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
+                            <li>ADVERTISTMENT - Received Highest Grade<br><br>Role: Co-director, Concept, Editor, Cinematographer<br>Subject: Medial Information Literacy<br>Title: Spooky Kupi <br><a href="#" target="_blank">*view here</a></li><br>
+                            <li>SHORT DOCUMENTARY - Aetas<br><br>Role: Director, Concept writer, Narrator, Editor, Cinematographer<br><a href="https://www.facebook.com/share/v/1CFbqfX1Mh/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
+                            <li>BRAND DEAL - M0RPH<br><br>Role: Director, Concept writer, Editor, Colorist, Cinematographer, Model<br>Package: All-in Package<br><a href="#" target="_blank">*view here</a></li><br>
+                            <li>POSTER - 2nd Runner-Up<br><br>Role: Designer<br>Event: 2024 University Of Saint Louis - Religious Film Festival<br>Film: KUWADRO(St.Philomena) <br><a href="https://www.facebook.com/photo.php?fbid=425477833368774&set=a.172997461950147&type=3&mibextid=wwXIfr" target="_blank">view here</a></li><br>
+                            <li>POSTER <br><br>Role: Designer<br>Event: 2023 University Of Saint Louis - KWENTO USL by Lente Likha<br>Film: INDAK(St.Augustine) <br><a href="https://www.facebook.com/share/1FSZZncbGF/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
+                            <li>POSTER & INFORGRAPHICS - Received High Grades<br><br>Role: Owner/Designer<br>Subject: Educational Projects 2024-2025<br><a href="#" target="_blank">view here</a></li><br>
+                        </ul>
+                    </div>
+                    <div class="section-group">
+                        <h4 class="section-title">Skills</h4>
+                        <ul>
+                            <li>Davinci Resolve</li>
+                            <li>Photoshop</li>
+                            <li>Canva</li>
+                            <li>AI tools</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Custom function for slow, smooth scrolling
+        function smoothScrollTo(targetElement, duration) {
+            const startPosition = window.pageYOffset;
+            const targetPosition = targetElement.offsetTop;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            // Easing function for a more natural feel
+            function easeInOutCubic(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t * t + b;
+                t -= 2;
+                return c / 2 * (t * t * t + 2) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // Smooth page transitions and navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const currentPage = document.querySelector('main:not([style*="display: none"])');
+
+                if (targetElement && currentPage) {
+                    // Check if the target is a different main page.
+                    if (targetElement.tagName === 'MAIN' && targetElement !== currentPage) {
+                        currentPage.style.display = 'none';
+                        targetElement.style.display = 'block';
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        // Otherwise, just smooth scroll within the current page.
+                        smoothScrollTo(targetElement, 1000);
+                    }
+                }
+            });
+        });
+
+        // Show home page on initial load
+        document.addEventListener('DOMContentLoaded', () => {
+             document.getElementById('home-page').style.display = 'block';
+        });
+
+        // Pop-up Modal Functionality
+        function openModal(modalType) {
+            const modal = document.getElementById(modalType + '-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('is-visible'), 10);
+            }
+        }
+        function closeModal(modalType) {
+            const modal = document.getElementById(modalType + '-modal');
+            if (modal) {
+                modal.classList.remove('is-visible');
+                setTimeout(() => modal.style.display = 'none', 500);
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const contactModal = document.getElementById('contact-modal');
+            const aboutModal = document.getElementById('about-modal');
+
+            if (event.target == contactModal) {
+                closeModal('contact');
+            }
+            if (event.target == aboutModal) {
+                closeModal('about');
+            }
+        }
+    </script>
+</body>
+</html>

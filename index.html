@@ -479,6 +479,36 @@
             fill: currentColor;
         }
 
+        /* --- Mobile Media Queries --- */
+        @media (max-width: 767px) {
+            header {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .header-left {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .header-left .logo {
+                justify-content: center;
+            }
+
+            .header-right {
+                flex-direction: row;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .contact-btn,
+            .about-btn {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+
         /* --- Desktop Media Queries --- */
         @media (min-width: 768px) {
             .hero-section {
@@ -535,10 +565,8 @@
 </head>
 <body>
 
-    <!-- Main Section: Home Page -->
     <main id="home-page">
         <div class="container">
-            <!-- Header -->
             <header>
                 <div class="header-left">
                     <a href="#home-page" class="logo">
@@ -552,10 +580,8 @@
                 </div>
             </header>
 
-            <!-- Hero Section -->
             <section class="hero-section">
                 <div class="hero-image-container">
-                    <!-- Replace the src with your hero image -->
                     <img src="https://placehold.co/1200x1200/4a4a4a/fff?text=Hero" alt="Person" class="hero-image">
                 </div>
                 <div class="hero-text-container">
@@ -576,7 +602,6 @@
             </section>
         </div>
         
-        <!-- Works Menu Section -->
         <section id="works-menu" class="works-menu-section">
             <div class="container">
                 <h2>I DARED TO REIMAGINE.</h2>
@@ -589,13 +614,11 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
         <section id="gallery-section" class="gallery-section">
             <div class="container">
                 <h2>Screen Grabs</h2>
                <p class="caption">My favorite shots from various projects. Color graded and framed by Jethro Brian</p>
                 <div class="gallery-grid">
-                    <!-- Replace src with your own images. Add more gallery-item divs to add more images. At least 30 images recommended. -->
                     <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+1" alt="Gallery Image"></div>
                     <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+2" alt="Gallery Image"></div>
                     <div class="gallery-item"><img src="https://placehold.co/1200x675/4a4a4a/fff?text=Image+3" alt="Gallery Image"></div>
@@ -631,7 +654,6 @@
         </section>
     </main>
 
-    <!-- Pages for Works Menu (Hidden by default) -->
     <main class="page-content" id="brand-deals-page" style="display: none;">
         <div class="container">
             <h2>BRAND DEALS</h2>
@@ -640,8 +662,6 @@
                 <button class="inquiry-btn" onclick="openModal('contact')">Inquiry</button>
             </div>
             <div class="video-gallery">
-                <!-- To add a new video, copy and paste the following div block. -->
-                <!-- Make sure to replace the video src, heading, and caption text. -->
                 <div class="video-item">
                     <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video>
                     <h3>Project A</h3>
@@ -669,8 +689,6 @@
                 <button class="inquiry-btn" onclick="openModal('contact')">Inquiry</button>
             </div>
             <div class="video-gallery">
-                <!-- To add a new video, copy and paste the following div block. -->
-                <!-- Make sure to replace the video src, heading, and caption text. -->
                 <div class="video-item">
                     <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"></video>
                     <h3>Winning Project</h3>
@@ -698,8 +716,6 @@
                 <button class="inquiry-btn" onclick="openModal('contact')">Inquiry</button>
             </div>
             <div class="video-gallery">
-                <!-- To add a new video, copy and paste the following div block. -->
-                <!-- Make sure to replace the video src, heading, and caption text. -->
                 <div class="video-item">
                     <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"></video>
                     <h3>Urban Exploration</h3>
@@ -719,13 +735,11 @@
         </div>
     </main>
 
-    <!-- Contact Pop-up Modal -->
     <div id="contact-modal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('contact')">&times;</button>
             <h3>Contact Me</h3>
             <div class="contact-links">
-                <!-- Instagram Link with Icon -->
                 <a href="https://www.instagram.com/_throimp?igsh=bTNyNjk4Mmt6bzRv&utm_source=qr" target="_blank" class="link-item">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C7.581 4 4 7.581 4 12C4 16.419 7.581 20 12 20C16.419 20 20 16.419 20 12C20 7.581 16.419 4 12 4ZM12 6C15.314 6 18 8.686 18 12C18 15.314 15.314 18 12 18C8.686 18 6 15.314 6 12C6 8.686 8.686 6 12 6Z" fill="currentColor"/>
@@ -735,34 +749,28 @@
                     </svg>
                     <span>Instagram</span>
                 </a>
-                <!-- Facebook Link with Icon -->
                 <a href="https://www.facebook.com/share/1BNPWaTWby/?mibextid=wwXIfr" target="_blank" class="link-item">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.5 2h-11C5.12 2 4 3.12 4 4.5V19.5C4 20.88 5.12 22 6.5 22H11V14H9V11H11V9C11 7.21 12.05 6 14.24 6C15.29 6 16.03 6.08 16.3 6.13V8.12H15.04C14.1 8.12 13.65 8.57 13.65 9.42V11H16.08L15.65 14H13.65V22H17.5C18.88 22 20 20.88 20 19.5V4.5C20 3.12 18.88 2 17.5 2Z" fill="currentColor"/>
                     </svg>
                     <span>Facebook</span>
                 </a>
-                <!-- TikTok Link with Icon -->
                 <a href="https://www.tiktok.com/@_throperio?_t=ZS-8zdujbjLvDl&_r=1" target="_blank" class="link-item">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2H12.997V10H16.495V13H12.997V18.5C12.997 20.433 11.43 22 9.497 22C7.564 22 6 20.433 6 18.5C6 16.567 7.564 15 9.497 15C10.155 15 10.771 15.176 11.31 15.485V13H9.497C8.12 13 7 11.88 7 10.5V10H9.997V2H12ZM12.997 2H16.495V10H12.997V2Z" fill="currentColor"/>
                     </svg>
                     <span>TikTok</span>
                 </a>
-                <!-- Email Link -->
-                
-                    <span>wassupkdot880896@gmail.com</span>
+                <span>wassupkdot880896@gmail.com</span>
                 </a>
             </div>
         </div>
     </div>
     
-    <!-- About Me Pop-up Modal -->
     <div id="about-modal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('about')">&times;</button>
             <div class="about-content">
-                <!-- Replace the src with your profile picture -->
                 <img src="https://placehold.co/150x150/4a4a4a/fff?text=Profile" alt="Profile Picture" class="profile-pic">
                 <h3>Jethro Brian D. Imperio</h3>
                 <p class="profession-title">Creative Director | Video Artist | Colorblind Colorist | Cinematographer</p>
@@ -774,7 +782,6 @@
                     <p>I’ve said it once, and I’ll say it again:<p> 
                     <p> “Life is a constant finding of purpose.”</p>
                 </div>
-                <!-- Aligned Achievements and Skills -->
                 <div class="about-details-grid">
                     <div class="section-group">
                         <h4 class="section-title">Achievements/Projects</h4>

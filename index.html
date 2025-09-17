@@ -53,12 +53,26 @@
             text-decoration: none;
         }
 
+        .logo-wrapper {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
         .header-left .logo-text {
-            color: var(--white);
+            color: var(--yellow);
             font-weight: 100;
             font-size: 2.2rem;
             letter-spacing: 2px;
             font-family: var(--logo-font);
+        }
+
+        .logo-subtitle {
+            color: var(--white);
+            font-size: 0.8rem;
+            font-family: var(--body-font);
+            letter-spacing: 1.5px;
+            font-weight: 400;
         }
 
         .header-right {
@@ -641,7 +655,10 @@
             <header>
                 <div class="header-left">
                     <a href="#home-page" class="logo">
-                        <span class="logo-text">GALARAWAN</span>
+                        <div class="logo-wrapper">
+                            <span class="logo-text">GALARAWAN</span>
+                            <span class="logo-subtitle">By Jethro Brian</span>
+                        </div>
                     </a>
                 </div>
                 <div class="header-right">

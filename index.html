@@ -56,9 +56,8 @@
         .header-left .logo-text {
             color: var(--white);
             font-weight: 100;
-            font-size: 2.2rem; /* Made a bit bigger */
+            font-size: 2.2rem;
             letter-spacing: 2px;
-            /* Apply LeBlanc font */
             font-family: var(--logo-font);
         }
 
@@ -75,7 +74,6 @@
             z-index: 60;
             position: relative;
             padding: 10px;
-
         }
 
         .bar {
@@ -458,11 +456,12 @@
         }
 
         .about-content .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 0;
             object-fit: cover;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
             display: block;
         }
 
@@ -474,58 +473,107 @@
             margin-bottom: 1.5rem;
             color: var(--yellow);
         }
+        
+        /* New styles for the requested About Me layout */
+        .about-content h3.about-title {
+            color: var(--yellow);
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .about-content .name-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-content .profession-caption {
+            font-size: 1rem;
+            color: var(--white);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .about-content .about-text {
+            text-align: justify;
+            margin-bottom: 2rem;
+            color: var(--light-gray);
+        }
 
         .about-content .section-title {
             font-weight: 700;
             color: var(--yellow);
             margin-top: 0.5rem;
-        }
-
-        .about-content .about-item img {
-            width: 25px;
-            height: 25px;
-        }
-
-        .about-details-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            align-items: flex-start;
-            width: 100%;
-        }
-
-        .about-details-grid .section-group {
-            flex: 1;
-            width: 100%;
-            text-align: left;
-        }
-
-        .about-details-grid .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-top: 2rem;
             margin-bottom: 1rem;
         }
 
-        .about-details-grid ul {
-            list-style: disc;
-            padding-left: 1.5rem;
+        .about-content .achievements,
+        .about-content .skills {
+            text-align: center;
+            width: 100%;
         }
 
-        .about-details-grid ul li {
-            margin-bottom: 0.75rem;
+        .about-content .achievements ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .about-content .achievements ul li {
+            margin-bottom: 1.5rem;
         }
 
-        .about-details-grid li:last-child {
-            margin-bottom: 0;
-        }
-
-        .about-details-grid a {
+        .about-content .achievements ul li a {
             color: var(--yellow);
-            text-decoration: underline;
-            transition: color 0.3s ease;
         }
 
-        .about-details-grid a:hover {
-            color: var(--white);
+        .about-content .achievements-list span {
+            color: var(--yellow);
         }
+
+        .about-content .skills ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        .about-content .skills ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .about-content .achievements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-content .achievements-list li {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .about-content .achievements-list li a {
+            color: var(--yellow);
+        }
+        
+        .about-content .awards-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .about-content .skills-title {
+             font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
 
         /* SVG icon styles */
         .icon {
@@ -830,9 +878,10 @@
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('about')">&times;</button>
             <div class="about-content">
+                <h3 class="about-title">ABOUT ME</h3>
+                <h3 class="name-title">JETHRO BRIAN D. IMPERIO</h3>
+                <p class="profession-caption">Creative Director | Video Artist | Colorblind Colorist | Cinematographer</p>
                 <img src="https://placehold.co/150x150/4a4a4a/fff?text=Profile" alt="Profile Picture" class="profile-pic">
-                <h3>Jethro Brian D. Imperio</h3>
-                <p class="profession-title">Creative Director | Video Artist | Colorblind Colorist | Cinematographer</p>
                 <div class="about-text">
                     <p>All my life, I’ve been dictated to what I can do, or what I can only do. But I dared to reimagine. I was once just a dreamer, trying to make it in this field. I tried many times — and failed just as much. But those failures taught me something. They shaped who I am today.</p><br>
                     <p>I dared to dream.<p>
@@ -841,32 +890,32 @@
                     <p>I’ve said it once, and I’ll say it again:<p>
                     <p> “Life is a constant finding of purpose.”</p>
                 </div>
-                <div class="about-details-grid">
-                    <div class="section-group">
-                        <h4 class="section-title">Achievements/Projects</h4>
-                        <ul>
-                            <li>FILM - Champion, Best Director, Best Cinematography<br><br>Role: Director, Editor, Colorist, Sound design, Cinematographer<br>Event: 2024 University Of Saint Louis - Religious Film Festival<br>Film: KUWADRO(St.Philomena) <br><a href="https://www.facebook.com/share/v/1ViK34LfLj/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
-                            <li>FILM - Best Cinematography & 2nd Best Film<br><br>Role: Cinematographer<br>Event: 2023 University Of Saint Louis - English Month<br>Film: Stroke of Choices(St.Augustine) <br><a href="https://www.facebook.com/share/1EyehtH4C1/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
-                            <li>FILM - Champion<br><br>Role: Cinematographer, Editor<br>Event: 2023 University Of Saint Louis - KWENTO USL by Lente Likha<br>Film: Indak(St.Augustine) <br><a href="https://www.facebook.com/share/17759S62tD/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
-                            <li>TEASER - Champion<br><br>Role: Director, Concept writer, Editor, Cinematographer<br>Event: 2024 University Of Saint Louis - Intramurals<br>Team: Valorous Caves of Tasaday(RED) <br><a href="https://www.facebook.com/share/v/1BC77nke1j/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
-                            <li>TEASER - Champion<br><br>Role: Editor, Cinematographer<br>Event: 2023 University Of Saint Louis - Intramurals<br>Team: Sirin Keepers of Chrysoprase(GREEN) <br><a href="https://www.facebook.com/share/v/1S5VU7aE9e/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
-                            <li>ADVERTISTMENT - Received Highest Grade<br><br>Role: Co-director, Concept, Editor, Cinematographer<br>Subject: Medial Information Literacy<br>Title: Spooky Kupi <br><a href="#" target="_blank">*view here</a></li><br>
-                            <li>SHORT DOCUMENTARY - Aetas<br><br>Role: Director, Concept writer, Narrator, Editor, Cinematographer<br><a href="https://www.facebook.com/share/v/1CFbqfX1Mh/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
-                            <li>BRAND DEAL - M0RPH<br><br>Role: Director, Concept writer, Editor, Colorist, Cinematographer, Model<br>Package: All-in Package<br><a href="#" target="_blank">*view here</a></li><br>
-                            <li>POSTER - 2nd Runner-Up<br><br>Role: Designer<br>Event: 2024 University Of Saint Louis - Religious Film Festival<br>Film: KUWADRO(St.Philomena) <br><a href="https://www.facebook.com/photo.php?fbid=425477833368774&set=a.172997461950147&type=3&mibextid=wwXIfr" target="_blank">view here</a></li><br>
-                            <li>POSTER <br><br>Role: Designer<br>Event: 2023 University Of Saint Louis - KWENTO USL by Lente Likha<br>Film: INDAK(St.Augustine) <br><a href="https://www.facebook.com/share/1FSZZncbGF/?mibextid=wwXIfr" target="_blank">view here</a></li><br>
-                            <li>POSTER & INFORGRAPHICS - Received High Grades<br><br>Role: Owner/Designer<br>Subject: Educational Projects 2024-2025<br><a href="#" target="_blank">view here</a></li><br>
-                        </ul>
-                    </div>
-                    <div class="section-group">
-                        <h4 class="section-title">Skills</h4>
-                        <ul>
-                            <li>Davinci Resolve</li>
-                            <li>Photoshop</li>
-                            <li>Canva</li>
-                            <li>AI tools</li>
-                        </ul>
-                    </div>
+                
+                <h4 class="section-title">ACHIEVEMENTS/PROJECTS</h4>
+                <div class="achievements">
+                    <ul class="achievements-list">
+                        <li><span>FILM</span> - Champion, Best Director, Best Cinematography<br><br>Role: Director, Editor, Colorist, Sound design, Cinematographer<br>Event: 2024 University Of Saint Louis - Religious Film Festival<br>Film: KUWADRO(St.Philomena) <br><a href="https://www.facebook.com/share/v/1ViK34LfLj/?mibextid=wwXIfr" target="_blank">view here</a></li>
+                        <li><span>FILM</span> - Best Cinematography & 2nd Best Film<br><br>Role: Cinematographer<br>Event: 2023 University Of Saint Louis - English Month<br>Film: Stroke of Choices(St.Augustine) <br><a href="https://www.facebook.com/share/1EyehtH4C1/?mibextid=wwXIfr" target="_blank">view here</a></li>
+                        <li><span>FILM</span> - Champion<br><br>Role: Cinematographer, Editor<br>Event: 2023 University Of Saint Louis - KWENTO USL by Lente Likha<br>Film: Indak(St.Augustine) <br><a href="https://www.facebook.com/share/17759S62tD/?mibextid=wwXIfr" target="_blank">view here</a></li>
+                        <li><span>TEASER</span> - Champion<br><br>Role: Director, Concept writer, Editor, Cinematographer<br>Event: 2024 University Of Saint Louis - Intramurals<br>Team: Valorous Caves of Tasaday(RED) <br><a href="https://www.facebook.com/share/v/1BC77nke1j/?mibextid=wwXIfr" target="_blank">view here</a></li>
+                        <li><span>TEASER</span> - Champion<br><br>Role: Editor, Cinematographer<br>Event: 2023 University Of Saint Louis - Intramurals<br>Team: Sirin Keepers of Chrysoprase(GREEN) <br><a href="https://www.facebook.com/share/v/1S5VU7aE9e/?mibextid=wwXIfr" target="_blank">view here</a></li>
+                        <li><span>ADVERTISTMENT</span> - Received Highest Grade<br><br>Role: Co-director, Concept, Editor, Cinematographer<br>Subject: Medial Information Literacy<br>Title: Spooky Kupi <br><a href="#" target="_blank">*view here</a></li>
+                        <li><span>SHORT DOCUMENTARY</span> - Aetas<br><br>Role: Director, Concept writer, Narrator, Editor, Cinematographer<br><a href="https://www.facebook.com/share/v/1CFbqfX1Mh/?mibextid=wwXIfr" target="_blank">view here</a></li>
+                        <li><span>BRAND DEAL</span> - M0RPH<br><br>Role: Director, Concept writer, Editor, Colorist, Cinematographer, Model<br>Package: All-in Package<br><a href="#" target="_blank">*view here</a></li>
+                        <li><span>POSTER</span> - 2nd Runner-Up<br><br>Role: Designer<br>Event: 2024 University Of Saint Louis - Religious Film Festival<br>Film: KUWADRO(St.Philomena) <br><a href="https://www.facebook.com/photo.php?fbid=425477833368774&set=a.172997461950147&type=3&mibextid=wwXIfr" target="_blank">view here</a></li>
+                        <li><span>POSTER</span> <br><br>Role: Designer<br>Event: 2023 University Of Saint Louis - KWENTO USL by Lente Likha<br>Film: INDAK(St.Augustine) <br><a href="https://www.facebook.com/share/1FSZZncbGF/?mibextid=wwXIfr" target="_blank">view here</a></li>
+                        <li><span>POSTER & INFORGRAPHICS</span> - Received High Grades<br><br>Role: Owner/Designer<br>Subject: Educational Projects 2024-2025<br><a href="#" target="_blank">view here</a></li>
+                    </ul>
+                </div>
+                
+                <h4 class="section-title">SKILLS</h4>
+                <div class="skills">
+                    <ul>
+                        <li>Davinci Resolve</li>
+                        <li>Photoshop</li>
+                        <li>Canva</li>
+                        <li>AI tools</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -966,7 +1015,3 @@
     </script>
 </body>
 </html>
-
-
-
-

@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/blanka" rel="stylesheet">
     <style>
         :root {
             --black: #000000;
@@ -15,6 +16,7 @@
             --light-gray: #c0c0c0;
             --semi-transparent: rgba(255, 255, 255, 0.1);
             --font-family: 'Montserrat', sans-serif;
+            --blanka-font: 'Blanka', sans-serif;
         }
 
         body {
@@ -52,12 +54,14 @@
             align-items: center;
             text-decoration: none;
         }
-        
+
         .header-left .logo-text {
             color: var(--white);
             font-weight: 100;
             font-size: 1.5rem;
             letter-spacing: 2px;
+            /* Apply Blanka font */
+            font-family: var(--blanka-font);
         }
 
         .header-right {
@@ -73,7 +77,7 @@
             z-index: 60;
             position: relative;
             padding: 10px;
-            
+
         }
 
         .bar {
@@ -108,9 +112,9 @@
         .menu-list {
             position: fixed;
             top: 0;
-            right: -300px;
-            width: 250px;
-            height: 100%;
+            right: -100%; /* Start off-screen to the right */
+            width: 100%; /* Fill the whole screen */
+            height: 100%; /* Fill the whole screen */
             background-color: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(15px);
             transition: right 0.5s ease;
@@ -122,11 +126,11 @@
         }
 
         .menu-list.open {
-            right: 0;
+            right: 0; /* Slide in to fill the screen */
         }
 
         .menu-list a, .menu-list button {
-            color: var(--white);
+            color: var(--yellow);
             text-decoration: none;
             font-size: 1.2rem;
             padding: 1rem 0;
@@ -139,7 +143,7 @@
         }
 
         .menu-list a:hover, .menu-list button:hover {
-            color: var(--yellow);
+            color: var(--white);
         }
 
         /* --- Hero Section --- */
@@ -155,14 +159,14 @@
             width: 100%;
             max-width: 450px;
         }
-        
+
         .hero-image {
             width: 100%;
             height: auto;
             border-radius: 5px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-        
+
         .hero-text-container {
             text-align: center;
         }
@@ -184,7 +188,7 @@
             font-size: clamp(0.9rem, 2vw, 1.1rem);
             margin-top: 0.5rem;
         }
-        
+
         .hero-text-container p {
             font-size: 1rem;
             line-height: 1.5;
@@ -205,7 +209,7 @@
             margin-bottom: 0.5rem;
             color: var(--light-gray);
         }
-        
+
         .my-works-btn {
             background-color: var(--yellow);
             color: var(--black);
@@ -216,7 +220,7 @@
             transition: all 0.3s ease;
             display: inline-block;
         }
-        
+
         .my-works-btn:hover {
             background-color: var(--white);
         }
@@ -226,13 +230,13 @@
             padding: 4rem 0;
             text-align: center;
         }
-        
+
         .works-menu-section h2 {
             font-size: 2rem;
             font-weight: 700;
             color: var(--white);
         }
-        
+
         .works-menu-section .caption {
             color: var(--yellow);
             font-size: 1.1rem;
@@ -256,11 +260,11 @@
             backdrop-filter: blur(5px);
             text-align: center;
         }
-        
+
         .works-buttons a:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         /* --- Gallery Section --- */
         .gallery-section {
             padding: 4rem 0;
@@ -293,7 +297,7 @@
             text-align: center;
             margin-bottom: 2rem;
         }
-        
+
         .page-header-nav {
             display: flex;
             flex-direction: column;
@@ -303,7 +307,7 @@
             border-bottom: 1px solid var(--semi-transparent);
             padding-bottom: 1.5rem;
         }
-        
+
         .page-header-nav .go-back-btn,
         .page-header-nav .inquiry-btn {
             background-color: transparent;
@@ -330,7 +334,7 @@
             margin-top: 1rem;
             align-items: center;
         }
-        
+
         .social-links a {
             text-decoration: none;
             color: var(--white);
@@ -343,13 +347,13 @@
         .social-links a:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-        
+
         .video-gallery {
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
         }
-        
+
         .video-item {
             background-color: var(--semi-transparent);
             padding: 1rem;
@@ -361,7 +365,7 @@
             height: auto;
             border-radius: 5px;
         }
-        
+
         .video-item h3 {
             font-size: 1.2rem;
             margin-top: 1rem;
@@ -372,7 +376,7 @@
             font-size: 0.9rem;
             color: var(--light-gray);
         }
-        
+
         /* --- Pop-up Modals (Contact & About) --- */
         .modal {
             position: fixed;
@@ -389,7 +393,7 @@
             transition: opacity 0.5s ease;
             z-index: 1000;
         }
-        
+
         .modal.is-visible {
             display: flex;
             opacity: 1;
@@ -438,7 +442,7 @@
             text-decoration: none;
             color: var(--white);
         }
-        
+
         .modal-content .contact-links .link-item {
             justify-content: center;
         }
@@ -449,7 +453,7 @@
             gap: 1rem;
             align-items: center;
         }
-        
+
         .about-content .profile-pic {
             width: 150px;
             height: 150px;
@@ -458,7 +462,7 @@
             margin: 0 auto 1rem;
             display: block;
         }
-        
+
         .about-content p, .about-content h4 {
             margin: 0;
         }
@@ -473,7 +477,7 @@
             color: var(--yellow);
             margin-top: 0.5rem;
         }
-        
+
         .about-content .about-item img {
             width: 25px;
             height: 25px;
@@ -501,7 +505,7 @@
             list-style: disc;
             padding-left: 1.5rem;
         }
-        
+
         .about-details-grid ul li {
             margin-bottom: 0.75rem;
         }
@@ -519,7 +523,7 @@
         .about-details-grid a:hover {
             color: var(--white);
         }
-        
+
         /* SVG icon styles */
         .icon {
             width: 24px;
@@ -538,7 +542,7 @@
             .hero-text-container {
                 text-align: left;
             }
-            
+
             .hero-text-container p,
             .hero-list {
                 margin-left: 0;
@@ -550,7 +554,7 @@
                 justify-content: center;
                 gap: 2rem;
             }
-            
+
             .works-buttons a {
                 flex: 1;
                 max-width: 300px;
@@ -560,19 +564,19 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 2rem;
             }
-            
+
             .page-header-nav {
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
                 gap: 2rem;
             }
-            
+
             .social-links {
                 flex-direction: row;
                 margin-top: 0;
             }
-            
+
             .video-gallery {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -624,7 +628,7 @@
                 </div>
             </section>
         </div>
-        
+
         <section id="works-menu" class="works-menu-section">
             <div class="container">
                 <h2>I DARED TO REIMAGINE.</h2>
@@ -732,9 +736,9 @@
         </div>
     </main>
 
-    <main class="page-content" id="color-grades-page" style="display: none;">
+    <main class="page-content" id="personal-projects-page" style="display: none;">
         <div class="container">
-            <h2>COLOR GRADES</h2>
+            <h2>PERSONAL PROJECTS</h2>
             <div class="page-header-nav">
                 <a href="#home-page" class="go-back-btn">Go Back</a>
                 <button class="inquiry-btn" onclick="openModal('contact')">Inquiry</button>
@@ -758,10 +762,10 @@
             </div>
         </div>
     </main>
-    
-    <main class="page-content" id="personal-projects-page" style="display: none;">
+
+    <main class="page-content" id="color-grades-page" style="display: none;">
         <div class="container">
-            <h2>PERSONAL PROJECTS</h2>
+            <h2>COLOR GRADES</h2>
             <div class="page-header-nav">
                 <a href="#home-page" class="go-back-btn">Go Back</a>
                 <button class="inquiry-btn" onclick="openModal('contact')">Inquiry</button>
@@ -812,12 +816,13 @@
                     </svg>
                     <span>TikTok</span>
                 </a>
-                <span>wassupkdot880896@gmail.com</span>
+                <a href="mailto:wassupkdot880896@gmail.com" class="link-item">
+                    <span>wassupkdot880896@gmail.com</span>
                 </a>
             </div>
         </div>
     </div>
-    
+
     <div id="about-modal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('about')">&times;</button>
@@ -827,10 +832,10 @@
                 <p class="profession-title">Creative Director | Video Artist | Colorblind Colorist | Cinematographer</p>
                 <div class="about-text">
                     <p>All my life, I’ve been dictated to what I can do, or what I can only do. But I dared to reimagine. I was once just a dreamer, trying to make it in this field. I tried many times — and failed just as much. But those failures taught me something. They shaped who I am today.</p><br>
-                    <p>I dared to dream.<p> 
-                    <p>I dared to fail. 
+                    <p>I dared to dream.<p>
+                    <p>I dared to fail.
                     <p>I dared to reimagine.</p><br>
-                    <p>I’ve said it once, and I’ll say it again:<p> 
+                    <p>I’ve said it once, and I’ll say it again:<p>
                     <p> “Life is a constant finding of purpose.”</p>
                 </div>
                 <div class="about-details-grid">

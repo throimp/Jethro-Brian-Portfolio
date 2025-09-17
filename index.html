@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GALARAWAN - Jethro Brian</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/leblanc" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/alter" rel="stylesheet">
     <style>
         :root {
             --black: #000000;
@@ -15,12 +13,12 @@
             --white: #ffffff;
             --light-gray: #c0c0c0;
             --semi-transparent: rgba(255, 255, 255, 0.1);
-            --font-family: 'Unbounded', sans-serif;
-            --leblanc-font: 'LeBlanc', sans-serif;
+            --body-font: 'Alter', sans-serif;
+            --logo-font: 'LeBlanc', sans-serif;
         }
 
         body {
-            font-family: var(--font-family);
+            font-family: var(--body-font);
             background-color: var(--black);
             color: var(--white);
             margin: 0;
@@ -58,10 +56,10 @@
         .header-left .logo-text {
             color: var(--white);
             font-weight: 100;
-            font-size: 1.5rem;
+            font-size: 2.2rem; /* Made a bit bigger */
             letter-spacing: 2px;
             /* Apply LeBlanc font */
-            font-family: var(--leblanc-font);
+            font-family: var(--logo-font);
         }
 
         .header-right {
@@ -140,6 +138,7 @@
             border: none;
             background: none;
             cursor: pointer;
+            font-family: var(--body-font);
         }
 
         .menu-list a:hover, .menu-list button:hover {
@@ -219,6 +218,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
+            font-family: var(--body-font);
         }
 
         .my-works-btn:hover {
@@ -259,6 +259,7 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
             text-align: center;
+            font-family: var(--body-font);
         }
 
         .works-buttons a:hover {
@@ -319,6 +320,7 @@
             border-radius: 5px;
             transition: all 0.3s ease;
             text-decoration: none;
+            font-family: var(--body-font);
         }
 
         .page-header-nav .inquiry-btn {
@@ -342,6 +344,7 @@
             border: 1px solid var(--semi-transparent);
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            font-family: var(--body-font);
         }
 
         .social-links a:hover {

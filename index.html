@@ -6,8 +6,8 @@
     <title>GALARAWAN - Jethro Brian</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/blanka" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/leblanc" rel="stylesheet">
     <style>
         :root {
             --black: #000000;
@@ -15,8 +15,8 @@
             --white: #ffffff;
             --light-gray: #c0c0c0;
             --semi-transparent: rgba(255, 255, 255, 0.1);
-            --font-family: 'Montserrat', sans-serif;
-            --blanka-font: 'Blanka', sans-serif;
+            --font-family: 'Unbounded', sans-serif;
+            --leblanc-font: 'LeBlanc', sans-serif;
         }
 
         body {
@@ -60,8 +60,8 @@
             font-weight: 100;
             font-size: 1.5rem;
             letter-spacing: 2px;
-            /* Apply Blanka font */
-            font-family: var(--blanka-font);
+            /* Apply LeBlanc font */
+            font-family: var(--leblanc-font);
         }
 
         .header-right {
@@ -112,9 +112,9 @@
         .menu-list {
             position: fixed;
             top: 0;
-            right: -100%; /* Start off-screen to the right */
-            width: 100%; /* Fill the whole screen */
-            height: 100%; /* Fill the whole screen */
+            right: -100%;
+            width: 100%;
+            height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(15px);
             transition: right 0.5s ease;
@@ -126,7 +126,7 @@
         }
 
         .menu-list.open {
-            right: 0; /* Slide in to fill the screen */
+            right: 0;
         }
 
         .menu-list a, .menu-list button {

@@ -12,7 +12,7 @@
             --black: #000000;
             --yellow: #f8c34f;
             --white: #ffffff;
-            --light-gray: #c0c0c0; /* New light gray color */
+            --light-gray: #c0c0c0;
             --semi-transparent: rgba(255, 255, 255, 0.1);
             --font-family: 'Montserrat', sans-serif;
         }
@@ -53,16 +53,6 @@
             text-decoration: none;
         }
         
-        .header-left .logo-img {
-            width: 40px;
-            height: 40px;
-            background-image: url('https://placehold.co/40x40/f8c34f/fff?text=L'); /* Replace with your logo image */
-            background-size: cover;
-            background-position: center;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
         .header-left .logo-text {
             color: var(--white);
             font-weight: 100;
@@ -76,22 +66,80 @@
             gap: 1rem;
         }
 
-        .contact-btn,
-        .about-btn {
-            background-color: transparent;
-            color: var(--white);
-            border: 1px solid var(--white);
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
+        /* --- Hamburger Menu --- */
+        .hamburger-menu {
+            display: block;
             cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            z-index: 60;
+            position: relative;
+            padding: 10px;
+            
         }
 
-        .contact-btn:hover,
-        .about-btn:hover {
+        .bar {
             background-color: var(--white);
-            color: var(--black);
+            height: 2px;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        .bar-1 {
+            width: 25px;
+        }
+        .bar-2 {
+            width: 20px;
+        }
+        .bar-3 {
+            width: 15px;
+        }
+
+        .hamburger-menu.open .bar-1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger-menu.open .bar-2 {
+            opacity: 0;
+        }
+
+        .hamburger-menu.open .bar-3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .menu-list {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 250px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(15px);
+            transition: right 0.5s ease;
+            z-index: 55;
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu-list.open {
+            right: 0;
+        }
+
+        .menu-list a, .menu-list button {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 1rem 0;
+            display: block;
+            width: 100%;
+            text-align: center;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .menu-list a:hover, .menu-list button:hover {
+            color: var(--yellow);
         }
 
         /* --- Hero Section --- */
@@ -185,7 +233,7 @@
             color: var(--white);
         }
         
-.works-menu-section .caption {
+        .works-menu-section .caption {
             color: var(--yellow);
             font-size: 1.1rem;
             margin-top: 0.5rem;
@@ -398,7 +446,7 @@
         .about-content {
             text-align: left;
             flex-direction: column;
-            gap: 1rem; /* Reduced gap */
+            gap: 1rem;
             align-items: center;
         }
         
@@ -423,7 +471,7 @@
         .about-content .section-title {
             font-weight: 700;
             color: var(--yellow);
-            margin-top: 0.5rem; /* Reduced margin */
+            margin-top: 0.5rem;
         }
         
         .about-content .about-item img {
@@ -450,16 +498,16 @@
         }
 
         .about-details-grid ul {
-            list-style: disc; /* Re-enabled bullets */
-            padding-left: 1.5rem; /* Added space before the bullets */
+            list-style: disc;
+            padding-left: 1.5rem;
         }
         
         .about-details-grid ul li {
-            margin-bottom: 0.75rem; /* Added space between list items */
+            margin-bottom: 0.75rem;
         }
 
         .about-details-grid li:last-child {
-            margin-bottom: 0; /* No margin on the last item */
+            margin-bottom: 0;
         }
 
         .about-details-grid a {
@@ -528,8 +576,6 @@
             .video-gallery {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            /* Removed the media query for about-details-grid to keep it as a column on all sizes */
         }
     </style>
 </head>
@@ -540,13 +586,20 @@
             <header>
                 <div class="header-left">
                     <a href="#home-page" class="logo">
-                        
                         <span class="logo-text">GALARAWAN</span>
                     </a>
                 </div>
                 <div class="header-right">
-                    <button class="about-btn" onclick="openModal('about')">About Me</button>
-                    <button class="contact-btn" onclick="openModal('contact')">Contact Me</button>
+                    <div class="hamburger-menu" onclick="toggleMenu()">
+                        <div class="bar bar-1"></div>
+                        <div class="bar bar-2"></div>
+                        <div class="bar bar-3"></div>
+                    </div>
+                    <nav class="menu-list" id="menu-list">
+                        <a href="#my-works" onclick="toggleMenu()">My Works</a>
+                        <button onclick="openModal('about'); toggleMenu();">About Me</button>
+                        <button onclick="openModal('contact'); toggleMenu();">Contact Me</button>
+                    </nav>
                 </div>
             </header>
 
@@ -556,7 +609,7 @@
                 </div>
                 <div class="hero-text-container">
                     <h1>HELLO!<br>I'M <span class="name">JETHRO BRIAN</span></h1>
-                    <p class="caption">Creative Director | Video Artist | Colorist | Video Artist | AI-Integrated VFX Artist</p>
+                    <p class="caption">Creative Director | Colorist | Video Artist | Cinematographer | AI-Integrated VFX Artist</p>
                     <p class="caption">NOW OPEN FOR CREATIVE PROJECTS!</p>
                     <ul class="hero-list">
                         <li>• Color grading</li>
@@ -865,6 +918,14 @@
             if (event.target == aboutModal) {
                 closeModal('about');
             }
+        }
+
+        // Hamburger menu functionality
+        function toggleMenu() {
+            const menu = document.getElementById('menu-list');
+            const hamburger = document.querySelector('.hamburger-menu');
+            menu.classList.toggle('open');
+            hamburger.classList.toggle('open');
         }
     </script>
 </body>

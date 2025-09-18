@@ -646,7 +646,19 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-    </style>
+<style>
+    /* ... existing CSS ... */
+
+    .gallery-item img {
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+
+    /* ... other CSS rules ... */
+</style>
 </head>
 <body>
 
@@ -1065,6 +1077,7 @@
     </script>
 </body>
 </html>
+
 
 
 

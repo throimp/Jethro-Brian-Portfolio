@@ -257,7 +257,8 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            transition: background-image 0.6s ease-in-out; /* Smoother transition */
+            /* SLOWER TRANSITION */
+            transition: background-image 1.0s ease-in-out; 
             filter: blur(5px) brightness(0.4); /* Stronger blur for background */
             z-index: 1;
         }
@@ -274,9 +275,14 @@
             padding-top: 2rem;
         }
         
+        /* Text Constraint Change for Margin/Padding */
         .works-text-content {
             text-align: center;
             margin-top: 2rem;
+            max-width: 800px; /* Constrain text width */
+            width: 90%; /* Ensure it's never full width */
+            margin-left: auto; /* Center it */
+            margin-right: auto; /* Center it */
         }
 
         .works-text-content h2 {
@@ -326,8 +332,8 @@
             background-position: center;
             border-radius: 15px; /* More prominent rounding (less rectangle) */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            /* Smoother transition: added cubic-bezier for the animation effect */
-            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.6s ease;
+            /* SLOWER TRANSITION */
+            transition: transform 1.0s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 1.0s ease;
             transform-style: preserve-3d;
             cursor: pointer;
             display: flex;
@@ -658,16 +664,12 @@
             gap: 1.5rem;
         }
 
-        .modal-content .contact-links .link-item,
-        .about-content .about-item {
+        .modal-content .contact-links .link-item {
             display: flex;
             align-items: center;
             gap: 1rem;
             text-decoration: none;
             color: var(--white);
-        }
-
-        .modal-content .contact-links .link-item {
             justify-content: center;
         }
 

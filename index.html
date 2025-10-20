@@ -239,44 +239,254 @@
 
         /* --- Works Menu Section --- */
         .works-menu-section {
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .works-menu-section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .works-menu-section .caption {
-            color: var(--yellow);
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-        }
-
-        .works-buttons {
+            position: relative; /* For absolute positioning of overlay/background */
+            padding: 0; /* Adjust padding as the background is full-screen */
+            height: 85vh; /* Gives space for the background image to show */
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* To keep the card carousel centered */
+        }
+
+        .works-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out;
+            filter: blur(3px) brightness(0.4);
+            z-index: 1;
+        }
+
+        .works-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+        }
+        
+        .works-text-content {
+            text-align: center;
             margin-top: 2rem;
         }
 
-        .works-buttons a {
-            background-color: var(--semi-transparent);
+        .works-text-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
             color: var(--white);
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            text-align: center;
-            font-family: var(--body-font);
+            margin-bottom: 0.5rem;
         }
 
-        .works-buttons a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+        .works-text-content .caption {
+            color: var(--yellow);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
+
+        .works-card-carousel-wrapper {
+            flex-grow: 1;
+            width: 100%;
+            max-width: 1000px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        
+        .carousel-track {
+            position: relative;
+            height: 400px; /* Controls the card size */
+            width: 100%;
+            perspective: 1000px; /* For 3D transform */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .works-card {
+            position: absolute;
+            width: 250px;
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            /* This is the key for smooth animation */
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease; 
+            transform-style: preserve-3d;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 1rem;
+            text-align: center;
+            color: var(--white);
+            text-decoration: none;
+            background-color: var(--black); /* Default fallback */
+            overflow: hidden;
+        }
+        
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%);
+            transition: opacity 0.6s ease;
+        }
+        
+        .card-text {
+            position: relative;
+            z-index: 10;
+            transition: opacity 0.6s ease;
+        }
+
+        .works-card.center {
+            transform: translateX(0) scale(1.2); /* Center card is larger */
+            opacity: 1;
+            z-index: 10;
+            background-color: var(--black); /* Override default for visibility */
+            border: 2px solid var(--yellow);
+            cursor: pointer; /* Center card is clickable */
+        }
+        
+        .works-card.center .card-text h3 {
+             font-size: 1.8rem;
+             color: var(--yellow);
+             margin-bottom: 0.5rem;
+             text-transform: uppercase;
+        }
+        
+        .works-card.center .card-text p {
+             font-size: 1rem;
+             margin-bottom: 0;
+             color: var(--light-gray);
+        }
+        
+        /* Styles for side cards to simulate stacking and depth (shadows) */
+        .works-card.left-3 {
+            transform: translate3d(-300%, 0, -400px) rotateY(15deg) scale(0.6);
+            opacity: 0; /* Fully hidden when too far left */
+            z-index: 1;
+            cursor: default;
+        }
+        .works-card.left-2 {
+            transform: translate3d(-200%, 0, -200px) rotateY(10deg) scale(0.8);
+            opacity: 0.5;
+            z-index: 2;
+            cursor: default;
+        }
+        .works-card.left-1 {
+            transform: translate3d(-100%, 0, -100px) rotateY(5deg) scale(0.9);
+            opacity: 0.75;
+            z-index: 3;
+            cursor: default;
+        }
+        
+        .works-card.right-1 {
+            transform: translate3d(100%, 0, -100px) rotateY(-5deg) scale(0.9);
+            opacity: 0.75;
+            z-index: 3;
+            cursor: default;
+        }
+        .works-card.right-2 {
+            transform: translate3d(200%, 0, -200px) rotateY(-10deg) scale(0.8);
+            opacity: 0.5;
+            z-index: 2;
+            cursor: default;
+        }
+        .works-card.right-3 {
+            transform: translate3d(300%, 0, -400px) rotateY(-15deg) scale(0.6);
+            opacity: 0; /* Fully hidden when too far right */
+            z-index: 1;
+            cursor: default;
+        }
+        
+        /* Hide text on side cards */
+        .works-card:not(.center) .card-text {
+            opacity: 0;
+        }
+        
+        .works-card:not(.center) .card-overlay {
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .works-card.center .card-overlay {
+            /* Make overlay subtle on center card */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%);
+        }
+        
+        /* Navigation Arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--semi-transparent);
+            color: var(--white);
+            padding: 10px;
+            cursor: pointer;
+            z-index: 15;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-arrow.left {
+            left: 20px;
+        }
+        
+        .nav-arrow.right {
+            right: 20px;
+        }
+
+        .dot-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: var(--white);
+            box-shadow: 0 0 5px var(--white);
+        }
+
 
         /* --- Gallery Section --- */
         .gallery-section {
@@ -719,18 +929,69 @@
         </div>
 
         <section id="works-menu" class="works-menu-section">
-            <div class="container">
-                <h2>I DARED TO REIMAGINE.</h2>
-                <p class="caption">I was once an assistant cinematographer and editor, and now I’m a creative director. I’ve experienced nearly every role in the field, and that makes me knowledgeable.</p>
-                <div class="works-buttons">
-                    <a href="#brand-deals-page">Brand Deals</a>
-                    <a href="#competition-page">Competition</a>
-                    <a href="#personal-projects-page">Personal Projects</a>
-                    <a href="#color-grades-page">Color Grades</a>
+            <div id="works-bg" class="works-background"></div>
+            <div class="works-content">
+                <div class="works-text-content">
+                    <h2>I DARED TO REIMAGINE.</h2>
+                    <p class="caption">I was once an assistant cinematographer and editor, and now I’m a creative director. I’ve experienced nearly every role in the field, and that makes me knowledgeable.</p>
                 </div>
+
+                <div class="works-card-carousel-wrapper">
+                    <div class="nav-arrow left" onclick="navigateCarousel(-1)">&#x2329;</div>
+                    <div class="carousel-track" id="works-carousel-track">
+                        
+                        <a href="#brand-deals-page" class="works-card" 
+                           data-title="BRAND DEALS" 
+                           data-caption="Collaborative projects with various clients."
+                           data-bg="image/1.webp">
+                           <div class="card-overlay"></div>
+                           <div class="card-text">
+                               <h3>BRAND DEALS</h3>
+                               <p>Adventure is never far away</p>
+                           </div>
+                        </a>
+                        
+                        <a href="#competition-page" class="works-card"
+                           data-title="COMPETITION" 
+                           data-caption="My award-winning and contest entries."
+                           data-bg="image/2.webp">
+                           <div class="card-overlay"></div>
+                           <div class="card-text">
+                               <h3>COMPETITION</h3>
+                               <p>My award-winning and contest entries.</p>
+                           </div>
+                        </a>
+                        
+                        <a href="#personal-projects-page" class="works-card"
+                           data-title="PERSONAL PROJECTS" 
+                           data-caption="Works driven by passion and creative exploration."
+                           data-bg="image/3.webp">
+                           <div class="card-overlay"></div>
+                           <div class="card-text">
+                               <h3>PERSONAL PROJECTS</h3>
+                               <p>Works driven by passion and creative exploration.</p>
+                           </div>
+                        </a>
+                        
+                        <a href="#color-grades-page" class="works-card"
+                           data-title="COLOR GRADES" 
+                           data-caption="Showcasing my color grading expertise."
+                           data-bg="image/4.webp">
+                           <div class="card-overlay"></div>
+                           <div class="card-text">
+                               <h3>COLOR GRADES</h3>
+                               <p>Showcasing my color grading expertise.</p>
+                           </div>
+                        </a>
+
+                    </div>
+                    <div class="nav-arrow right" onclick="navigateCarousel(1)">&#x232A;</div>
+                </div>
+
+                <div class="dot-navigation" id="works-dots">
+                    </div>
             </div>
         </section>
-
         <section id="gallery-section" class="gallery-section">
             <div class="container">
                 <h2>FRAMES</h2>
@@ -992,6 +1253,141 @@
     </div>
 
     <script>
+        // Data for the carousel cards
+        const carouselData = [
+            { id: 0, title: "BRAND DEALS", caption: "Collaborative projects with various clients.", bg: "image/1.webp", href: "#brand-deals-page" },
+            { id: 1, title: "COMPETITION", caption: "My award-winning and contest entries.", bg: "image/2.webp", href: "#competition-page" },
+            { id: 2, title: "PERSONAL PROJECTS", caption: "Works driven by passion and creative exploration.", bg: "image/3.webp", href: "#personal-projects-page" },
+            { id: 3, title: "COLOR GRADES", caption: "Showcasing my color grading expertise.", bg: "image/4.webp", href: "#color-grades-page" }
+        ];
+
+        let currentIndex = 0;
+        const worksBg = document.getElementById('works-bg');
+        const carouselTrack = document.getElementById('works-carousel-track');
+        const worksDots = document.getElementById('works-dots');
+        
+        // Function to update all card positions and the background
+        function updateCarousel(index) {
+            const cards = document.querySelectorAll('.works-card');
+            const N = cards.length;
+            
+            cards.forEach((card, i) => {
+                // 1. Calculate the raw difference from the current center
+                let diff = i - index; 
+
+                // 2. Adjust for **unlimited circular movement (looping)**
+                // If the absolute difference is greater than half the array size, it's closer 
+                // to the current index by wrapping around.
+                if (Math.abs(diff) > N / 2) {
+                    // Example: N=4, index=0 (A), card=3 (D). diff=3. N/2=2. |3|>2.
+                    // Card D is visually -1 (left-1) from A.
+                    if (diff > 0) {
+                        diff -= N; // 3 - 4 = -1 (Correct: left-1)
+                    } else { 
+                        // Example: N=4, index=3 (D), card=0 (A). diff=-3. N/2=2. |-3|>2.
+                        // Card A is visually +1 (right-1) from D.
+                        diff += N; // -3 + 4 = 1 (Correct: right-1)
+                    }
+                }
+                
+                card.classList.remove('center', 'left-1', 'left-2', 'left-3', 'right-1', 'right-2', 'right-3');
+                card.onclick = null; // Reset click handler for all cards
+
+                let positionClass = '';
+
+                if (diff === 0) {
+                    // Center card (selected button)
+                    positionClass = 'center';
+                    
+                    // Only the center card should be clickable
+                    card.onclick = (e) => {
+                        e.preventDefault();
+                        const targetId = card.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        const currentPage = document.querySelector('main:not([style*="display: none"])');
+                        if (targetElement && currentPage) {
+                            currentPage.style.display = 'none';
+                            targetElement.style.display = 'block';
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    };
+                } else if (diff > 0) {
+                    // Cards to the right
+                    positionClass = `right-${diff}`;
+                    // Cap the class to the visible ones (right-1, right-2, right-3)
+                    if (diff > 3) positionClass = 'right-3';
+                } else {
+                    // Cards to the left
+                    const absDiff = Math.abs(diff);
+                    positionClass = `left-${absDiff}`;
+                    // Cap the class to the visible ones (left-1, left-2, left-3)
+                    if (absDiff > 3) positionClass = 'left-3';
+                }
+                
+                if (positionClass) {
+                    card.classList.add(positionClass);
+                }
+            });
+
+            // Update Background Image (changable to the same photo of the square button)
+            const selectedData = carouselData[index];
+            if (selectedData) {
+                worksBg.style.backgroundImage = `url('${selectedData.bg}')`;
+            }
+            
+            // Update dots
+            updateDots(index);
+        }
+
+        // Function to create card HTML elements
+        function createCards() {
+            carouselTrack.innerHTML = '';
+            worksDots.innerHTML = '';
+            carouselData.forEach((item) => {
+                 const card = document.createElement('a');
+                 card.href = item.href;
+                 card.className = 'works-card';
+                 card.setAttribute('data-title', item.title);
+                 card.setAttribute('data-caption', item.caption);
+                 card.setAttribute('data-bg', item.bg);
+                 card.style.backgroundImage = `url('${item.bg}')`;
+                 
+                 card.innerHTML = `
+                    <div class="card-overlay"></div>
+                    <div class="card-text">
+                       <h3>${item.title}</h3>
+                       <p>${item.caption}</p>
+                    </div>
+                 `;
+                 carouselTrack.appendChild(card);
+                 
+                 const dot = document.createElement('div');
+                 dot.className = 'dot';
+                 // Set dot click to update carousel
+                 dot.onclick = () => { currentIndex = item.id; updateCarousel(currentIndex); };
+                 worksDots.appendChild(dot);
+            });
+        }
+        
+        // Function to update the dot navigation
+        function updateDots(index) {
+            const dots = worksDots.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        // Function for arrow navigation (now fully circular)
+        function navigateCarousel(direction) {
+            const N = carouselData.length;
+            // The modulo operation ensures the index loops back to 0 or N-1
+            currentIndex = (currentIndex + direction + N) % N; 
+            updateCarousel(currentIndex);
+        }
+        
+        // Attach the global function for use in the HTML buttons
+        window.navigateCarousel = navigateCarousel;
+        
         // Custom function for slow, smooth scrolling
         function smoothScrollTo(targetElement, duration) {
             const startPosition = window.pageYOffset;
@@ -1021,15 +1417,22 @@
         // Smooth page transitions and navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 const currentPage = document.querySelector('main:not([style*="display: none"])');
+                
+                // Only prevent default if it's not a carousel card click handler (which handles its own page change)
+                if (!this.classList.contains('works-card')) {
+                    e.preventDefault();
+                }
 
                 if (targetElement && currentPage) {
                     // Check if the target is a different main page.
                     if (targetElement.tagName === 'MAIN' && targetElement !== currentPage) {
+                        // The works-card handler inside updateCarousel already handles this logic for the cards,
+                        // this is for the nav/dot links.
+                        if (e.defaultPrevented || this.classList.contains('works-card')) return;
+                        
                         currentPage.style.display = 'none';
                         targetElement.style.display = 'block';
                         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1044,6 +1447,8 @@
         // Show home page on initial load
         document.addEventListener('DOMContentLoaded', () => {
              document.getElementById('home-page').style.display = 'block';
+             createCards(); // Initialize cards
+             updateCarousel(currentIndex); // Set initial state
         });
 
         // Pop-up Modal Functionality
@@ -1085,22 +1490,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

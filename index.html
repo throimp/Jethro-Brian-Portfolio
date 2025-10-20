@@ -332,8 +332,8 @@
             background-position: center;
             border-radius: 15px; /* More prominent rounding (less rectangle) */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            /* SLOWER TRANSITION */
-            transition: transform 1.0s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 1.0s ease;
+            /* REVISED TRANSITION FOR SMOOTHER SWIPE */
+            transition: transform 1.0s ease-in-out, opacity 1.0s ease;
             transform-style: preserve-3d;
             cursor: pointer;
             display: flex;
@@ -940,7 +940,6 @@
             </section>
         </div>
 
-        <!-- REVISED WORKS MENU SECTION START -->
         <section id="works-menu" class="works-menu-section">
             <div id="works-bg" class="works-background"></div>
             <div class="works-content">
@@ -953,7 +952,6 @@
                     <div class="nav-arrow left" onclick="navigateCarousel(-1)">&#x2329;</div>
                     <div class="carousel-track" id="works-carousel-track">
                         
-                        <!-- Cards will be dynamically added here by JavaScript -->
                         <a href="#brand-deals-page" class="works-card" 
                            data-title="BRAND DEALS" 
                            data-caption="Collaborative projects with various clients."
@@ -1003,12 +1001,9 @@
                 </div>
 
                 <div class="dot-navigation" id="works-dots">
-                    <!-- Dots will be dynamically added here by JavaScript -->
-                </div>
+                    </div>
             </div>
         </section>
-        <!-- REVISED WORKS MENU SECTION END -->
-
         <section id="gallery-section" class="gallery-section">
             <div class="container">
                 <h2>FRAMES</h2>

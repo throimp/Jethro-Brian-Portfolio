@@ -241,7 +241,7 @@
         .works-menu-section {
             position: relative; /* For absolute positioning of overlay/background */
             padding: 0; /* Adjust padding as the background is full-screen */
-            height: 85vh; /* Gives space for the background image to show */
+            height: 75vh; /* Reduced height for phone compatibility */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -308,7 +308,7 @@
         
         .carousel-track {
             position: relative;
-            height: 400px; /* Controls the card size */
+            height: 350px; /* Controls the vertical space */
             width: 100%;
             perspective: 1000px; /* For 3D transform */
             display: flex;
@@ -316,16 +316,17 @@
             align-items: center;
         }
         
+        /* Revised Card Styles for Mobile Compatibility and Shrinking */
         .works-card {
             position: absolute;
-            width: 250px;
-            height: 350px;
+            width: 200px; /* Reduced from 250px */
+            height: 300px; /* Reduced from 350px */
             background-size: cover;
             background-position: center;
             border-radius: 5px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            /* This is the key for smooth animation */
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease; 
+            /* Smooth transition for the swiping effect */
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease, filter 0.6s ease;
             transform-style: preserve-3d;
             cursor: pointer;
             display: flex;
@@ -357,12 +358,12 @@
         }
 
         .works-card.center {
-            transform: translateX(0) scale(1.2); /* Center card is larger */
+            transform: translateX(0) scale(1.1); /* Center card is larger */
             opacity: 1;
             z-index: 10;
-            background-color: var(--black); /* Override default for visibility */
+            background-color: var(--black);
             border: 2px solid var(--yellow);
-            cursor: pointer; /* Center card is clickable */
+            filter: brightness(1);
         }
         
         .works-card.center .card-text h3 {
@@ -378,43 +379,41 @@
              color: var(--light-gray);
         }
         
-        /* Styles for side cards to simulate stacking and depth (shadows) */
+        /* Styles for side cards to simulate stacking and depth (Shadow-like) */
         .works-card.left-3 {
-            transform: translate3d(-300%, 0, -400px) rotateY(15deg) scale(0.6);
-            opacity: 0; /* Fully hidden when too far left */
+            transform: translate3d(-250%, 0, -350px) rotateY(15deg) scale(0.5);
+            opacity: 0;
             z-index: 1;
-            cursor: default;
         }
         .works-card.left-2 {
-            transform: translate3d(-200%, 0, -200px) rotateY(10deg) scale(0.8);
-            opacity: 0.5;
+            transform: translate3d(-175%, 0, -175px) rotateY(10deg) scale(0.7);
+            opacity: 0.4;
             z-index: 2;
-            cursor: default;
+            filter: brightness(0.6);
         }
         .works-card.left-1 {
-            transform: translate3d(-100%, 0, -100px) rotateY(5deg) scale(0.9);
-            opacity: 0.75;
+            transform: translate3d(-90%, 0, -75px) rotateY(5deg) scale(0.85);
+            opacity: 0.7;
             z-index: 3;
-            cursor: default;
+            filter: brightness(0.75);
         }
         
         .works-card.right-1 {
-            transform: translate3d(100%, 0, -100px) rotateY(-5deg) scale(0.9);
-            opacity: 0.75;
+            transform: translate3d(90%, 0, -75px) rotateY(-5deg) scale(0.85);
+            opacity: 0.7;
             z-index: 3;
-            cursor: default;
+            filter: brightness(0.75);
         }
         .works-card.right-2 {
-            transform: translate3d(200%, 0, -200px) rotateY(-10deg) scale(0.8);
-            opacity: 0.5;
+            transform: translate3d(175%, 0, -175px) rotateY(-10deg) scale(0.7);
+            opacity: 0.4;
             z-index: 2;
-            cursor: default;
+            filter: brightness(0.6);
         }
         .works-card.right-3 {
-            transform: translate3d(300%, 0, -400px) rotateY(-15deg) scale(0.6);
-            opacity: 0; /* Fully hidden when too far right */
+            transform: translate3d(250%, 0, -350px) rotateY(-15deg) scale(0.5);
+            opacity: 0;
             z-index: 1;
-            cursor: default;
         }
         
         /* Hide text on side cards */
@@ -431,7 +430,7 @@
             background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%);
         }
         
-        /* Navigation Arrows */
+        /* Navigation Arrows - Shrink for Mobile */
         .nav-arrow {
             position: absolute;
             top: 50%;
@@ -443,12 +442,12 @@
             cursor: pointer;
             z-index: 15;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 30px; /* Reduced width */
+            height: 30px; /* Reduced height */
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem; /* Reduced font size */
             transition: background-color 0.3s ease;
         }
         
@@ -864,18 +863,6 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-<style>
-    /* ... existing CSS ... */
-
-    .gallery-item img {
-      user-select: none;
-      -moz-user-select: none;
-      -webkit-user-drag: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-    }
-
-    /* ... other CSS rules ... */
 </style>
 </head>
 <body>
@@ -1269,37 +1256,23 @@
         // Function to update all card positions and the background
         function updateCarousel(index) {
             const cards = document.querySelectorAll('.works-card');
-            const N = cards.length;
+            const total = cards.length;
             
             cards.forEach((card, i) => {
-                // 1. Calculate the raw difference from the current center
-                let diff = i - index; 
+                // 1. Calculate circular difference (unlimited circular movement)
+                let diff = i - index;
+                // Wrap around logic for unlimited circular movement
+                if (diff > total / 2) diff -= total; 
+                if (diff < -total / 2) diff += total;
 
-                // 2. Adjust for **unlimited circular movement (looping)**
-                // If the absolute difference is greater than half the array size, it's closer 
-                // to the current index by wrapping around.
-                if (Math.abs(diff) > N / 2) {
-                    // Example: N=4, index=0 (A), card=3 (D). diff=3. N/2=2. |3|>2.
-                    // Card D is visually -1 (left-1) from A.
-                    if (diff > 0) {
-                        diff -= N; // 3 - 4 = -1 (Correct: left-1)
-                    } else { 
-                        // Example: N=4, index=3 (D), card=0 (A). diff=-3. N/2=2. |-3|>2.
-                        // Card A is visually +1 (right-1) from D.
-                        diff += N; // -3 + 4 = 1 (Correct: right-1)
-                    }
-                }
-                
-                card.classList.remove('center', 'left-1', 'left-2', 'left-3', 'right-1', 'right-2', 'right-3');
-                card.onclick = null; // Reset click handler for all cards
+                // 2. Remove all positioning classes
+                card.className = 'works-card';
+                card.onclick = null; // Reset click handlers
 
-                let positionClass = '';
-
+                // 3. Assign new class and clickability (Only center is clickable)
                 if (diff === 0) {
-                    // Center card (selected button)
-                    positionClass = 'center';
-                    
-                    // Only the center card should be clickable
+                    card.classList.add('center');
+                    // Only the center card is clickable for navigation
                     card.onclick = (e) => {
                         e.preventDefault();
                         const targetId = card.getAttribute('href');
@@ -1311,25 +1284,22 @@
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         }
                     };
-                } else if (diff > 0) {
-                    // Cards to the right
-                    positionClass = `right-${diff}`;
-                    // Cap the class to the visible ones (right-1, right-2, right-3)
-                    if (diff > 3) positionClass = 'right-3';
-                } else {
-                    // Cards to the left
-                    const absDiff = Math.abs(diff);
-                    positionClass = `left-${absDiff}`;
-                    // Cap the class to the visible ones (left-1, left-2, left-3)
-                    if (absDiff > 3) positionClass = 'left-3';
-                }
-                
-                if (positionClass) {
-                    card.classList.add(positionClass);
+                } else if (diff === -1) {
+                    card.classList.add('left-1');
+                } else if (diff === -2) {
+                    card.classList.add('left-2');
+                } else if (diff <= -3) { 
+                    card.classList.add('left-3');
+                } else if (diff === 1) {
+                    card.classList.add('right-1');
+                } else if (diff === 2) {
+                    card.classList.add('right-2');
+                } else if (diff >= 3) {
+                    card.classList.add('right-3');
                 }
             });
 
-            // Update Background Image (changable to the same photo of the square button)
+            // Update Background Image (2nd page background becomes a photo with the same photo of the square button)
             const selectedData = carouselData[index];
             if (selectedData) {
                 worksBg.style.backgroundImage = `url('${selectedData.bg}')`;
@@ -1363,7 +1333,6 @@
                  
                  const dot = document.createElement('div');
                  dot.className = 'dot';
-                 // Set dot click to update carousel
                  dot.onclick = () => { currentIndex = item.id; updateCarousel(currentIndex); };
                  worksDots.appendChild(dot);
             });
@@ -1377,11 +1346,9 @@
             });
         }
 
-        // Function for arrow navigation (now fully circular)
+        // Function for arrow navigation (circular/looping)
         function navigateCarousel(direction) {
-            const N = carouselData.length;
-            // The modulo operation ensures the index loops back to 0 or N-1
-            currentIndex = (currentIndex + direction + N) % N; 
+            currentIndex = (currentIndex + direction + carouselData.length) % carouselData.length;
             updateCarousel(currentIndex);
         }
         
@@ -1429,10 +1396,6 @@
                 if (targetElement && currentPage) {
                     // Check if the target is a different main page.
                     if (targetElement.tagName === 'MAIN' && targetElement !== currentPage) {
-                        // The works-card handler inside updateCarousel already handles this logic for the cards,
-                        // this is for the nav/dot links.
-                        if (e.defaultPrevented || this.classList.contains('works-card')) return;
-                        
                         currentPage.style.display = 'none';
                         targetElement.style.display = 'block';
                         window.scrollTo({ top: 0, behavior: 'smooth' });

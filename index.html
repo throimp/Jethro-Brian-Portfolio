@@ -240,8 +240,11 @@
         /* --- Works Menu Section - REVISED STYLING --- */
         .works-menu-section {
             position: relative; 
-            padding: 0; 
-            height: 95vh; /* Increased height for better mobile fit */
+            /* Min-height to ensure space for the carousel and content */
+            min-height: 95vh; 
+            padding-top: 0; 
+            /* Added padding-bottom for better mobile spacing */
+            padding-bottom: 5rem; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -332,8 +335,8 @@
             background-position: center;
             border-radius: 15px; /* More prominent rounding (less rectangle) */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            /* REVISED TRANSITION FOR SMOOTHER SWIPE */
-            transition: transform 1.0s ease-in-out, opacity 1.0s ease;
+            /* REVISED: Smoother/Slightly faster transition for a better swipe feel */
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease;
             transform-style: preserve-3d;
             cursor: pointer;
             display: flex;

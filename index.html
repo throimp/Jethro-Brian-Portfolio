@@ -59,13 +59,6 @@
             line-height: 1.1;
         }
 
-        /* Added style for the new logo image */
-        .logo-img {
-            height: 50px; /* Adjust this height to fit your design */
-            width: auto;
-            display: block;
-        }
-
         .header-left .logo-text {
             color: var(--yellow);
             font-weight: 100;
@@ -247,8 +240,10 @@
         /* --- Works Menu Section - REVISED STYLING --- */
         .works-menu-section {
             position: relative; 
+            /* Min-height to ensure space for the carousel and content */
             min-height: 95vh; 
             padding-top: 0; 
+            /* Added padding-bottom for better mobile spacing */
             padding-bottom: 5rem; 
             display: flex;
             flex-direction: column;
@@ -265,8 +260,9 @@
             height: 100%;
             background-size: cover;
             background-position: center;
+            /* SLOWER TRANSITION */
             transition: background-image 1.0s ease-in-out; 
-            filter: blur(5px) brightness(0.4); 
+            filter: blur(5px) brightness(0.4); /* Stronger blur for background */
             z-index: 1;
         }
 
@@ -282,13 +278,14 @@
             padding-top: 2rem;
         }
         
+        /* Text Constraint Change for Margin/Padding */
         .works-text-content {
             text-align: center;
             margin-top: 2rem;
-            max-width: 800px; 
-            width: 90%; 
-            margin-left: auto; 
-            margin-right: auto; 
+            max-width: 800px; /* Constrain text width */
+            width: 90%; /* Ensure it's never full width */
+            margin-left: auto; /* Center it */
+            margin-right: auto; /* Center it */
         }
 
         .works-text-content h2 {
@@ -332,12 +329,13 @@
         /* Individual Card (Button) Styling */
         .works-card {
             position: absolute;
-            width: 220px; 
-            height: 320px; 
+            width: 220px; /* Slightly smaller */
+            height: 320px; /* Slightly smaller */
             background-size: cover;
             background-position: center;
-            border-radius: 15px; 
+            border-radius: 15px; /* More prominent rounding (less rectangle) */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            /* REVISED: Smoother/Slightly faster transition for a better swipe feel */
             transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease;
             transform-style: preserve-3d;
             cursor: pointer;
@@ -351,16 +349,16 @@
             text-decoration: none;
             background-color: var(--black);
             overflow: hidden;
-            pointer-events: none; 
+            pointer-events: none; /* Default: not clickable */
         }
 
         .works-card.center {
-            transform: translateX(0) scale(1.15); 
+            transform: translateX(0) scale(1.15); /* Center card is larger */
             opacity: 1;
             z-index: 10;
             background-color: var(--black); 
-            border: 3px solid var(--yellow); 
-            pointer-events: auto; 
+            border: 3px solid var(--yellow); /* Thicker border on selected */
+            pointer-events: auto; /* Only center card is clickable */
         }
         
         .card-overlay {
@@ -378,6 +376,7 @@
             transition: opacity 0.6s ease;
         }
 
+        /* Center Card Text Style */
         .works-card.center .card-text h3 {
              font-size: 1.8rem;
              color: var(--yellow);
@@ -391,7 +390,7 @@
              color: var(--light-gray);
         }
         
-        /* Side Card Transforms */
+        /* Side Card Transforms (Shadow/Stacking Effect) */
         .works-card.left-3 {
             transform: translate3d(-200%, 0, -400px) rotateY(15deg) scale(0.6);
             opacity: 0;
@@ -406,14 +405,14 @@
             transform: translate3d(-70%, 0, -100px) rotateY(5deg) scale(0.9); 
             opacity: 0.8;
             z-index: 3;
-            box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5); 
+            box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5); /* Shadow for depth */
         }
         
         .works-card.right-1 {
             transform: translate3d(70%, 0, -100px) rotateY(-5deg) scale(0.9); 
             opacity: 0.8;
             z-index: 3;
-            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5); 
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5); /* Shadow for depth */
         }
         .works-card.right-2 {
             transform: translate3d(150%, 0, -250px) rotateY(-10deg) scale(0.75);
@@ -426,6 +425,7 @@
             z-index: 1;
         }
         
+        /* Hide text on side cards */
         .works-card:not(.center) .card-text {
             opacity: 0;
         }
@@ -435,6 +435,7 @@
         }
         
         .works-card.center .card-overlay {
+            /* Make overlay subtle on center card */
             background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%);
         }
         
@@ -493,6 +494,7 @@
             background-color: var(--white);
             box-shadow: 0 0 5px var(--white);
         }
+
 
         /* --- Gallery Section --- */
         .gallery-section {
@@ -608,7 +610,7 @@
             color: var(--light-gray);
         }
 
-        /* --- Pop-up Modals --- */
+        /* --- Pop-up Modals (Contact & About) --- */
         .modal {
             position: fixed;
             top: 0;
@@ -700,6 +702,7 @@
             color: var(--yellow);
         }
         
+        /* New styles for the requested About Me layout */
         .about-content h3.about-title {
             color: var(--yellow);
             font-size: 2.5rem;
@@ -799,6 +802,7 @@
             margin-top: 2rem;
         }
 
+
         /* SVG icon styles */
         .icon {
             width: 24px;
@@ -865,7 +869,7 @@
             }
         }
 
-        /* Mobile Adjustments */
+        /* Mobile Adjustments for Carousel */
         @media (max-width: 500px) {
             .works-card {
                 width: 180px;
@@ -897,7 +901,8 @@
                 <div class="header-left">
                     <a href="#home-page" class="logo">
                         <div class="logo-wrapper">
-                            <img src="galarawan logo fnl transparent.webp" alt="GALARAWAN" class="logo-img">
+                            <span class="logo-text">GALARAWAN</span>
+                         
                         </div>
                     </a>
                 </div>
@@ -949,14 +954,59 @@
                 <div class="works-card-carousel-wrapper">
                     <div class="nav-arrow left" onclick="navigateCarousel(-1)">&#x2329;</div>
                     <div class="carousel-track" id="works-carousel-track">
-                        </div>
+                        
+                        <a href="#brand-deals-page" class="works-card" 
+                           data-title="BRAND DEALS" 
+                           data-caption="Collaborative projects with various clients."
+                           data-bg="image/1.webp">
+                           <div class="card-overlay"></div>
+                           <div class="card-text">
+                               <h3>BRAND DEALS</h3>
+                               <p>Adventure is never far away</p>
+                           </div>
+                        </a>
+                        
+                        <a href="#competition-page" class="works-card"
+                           data-title="COMPETITION" 
+                           data-caption="My award-winning and contest entries."
+                           data-bg="image/2.webp">
+                           <div class="card-overlay"></div>
+                           <div class="card-text">
+                               <h3>COMPETITION</h3>
+                               <p>My award-winning and contest entries.</p>
+                           </div>
+                        </a>
+                        
+                        <a href="#personal-projects-page" class="works-card"
+                           data-title="PERSONAL PROJECTS" 
+                           data-caption="Works driven by passion and creative exploration."
+                           data-bg="image/3.webp">
+                           <div class="card-overlay"></div>
+                           <div class="card-text">
+                               <h3>PERSONAL PROJECTS</h3>
+                               <p>Works driven by passion and creative exploration.</p>
+                           </div>
+                        </a>
+                        
+                        <a href="#color-grades-page" class="works-card"
+                           data-title="COLOR GRADES" 
+                           data-caption="Showcasing my color grading expertise."
+                           data-bg="image/4.webp">
+                           <div class="card-overlay"></div>
+                           <div class="card-text">
+                               <h3>COLOR GRADES</h3>
+                               <p>Showcasing my color grading expertise.</p>
+                           </div>
+                        </a>
+
+                    </div>
                     <div class="nav-arrow right" onclick="navigateCarousel(1)">&#x232A;</div>
                 </div>
 
-                <div class="dot-navigation" id="works-dots"></div>
+                <div class="dot-navigation" id="works-dots">
+                    </div>
             </div>
         </section>
-
         <section id="gallery-section" class="gallery-section">
             <div class="container">
                 <h2>FRAMES</h2>
@@ -1005,16 +1055,21 @@
                 <button class="inquiry-btn" onclick="openModal('contact')">Inquiry</button>
             </div>
                <div class="video-gallery">
+                <!-- SAVAGE -->
                 <div class="video-item">
                     <video controls preload="metadata" poster="https://res.cloudinary.com/dltbwjspl/video/upload/so_0/Savage_jn8qrc.jpg" playsinline>
                         <source src="https://res.cloudinary.com/dltbwjspl/video/upload/q_auto,f_auto/Savage_jn8qrc.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
                     <h3>SAVAGE</h3>
                     <p>Morph Clothing x Galarawan</p>
                 </div>
+
+                <!-- FREEDOM - UPDATED FOR WEB & MOBILE -->
                 <div class="video-item">
                     <video controls preload="metadata" poster="https://res.cloudinary.com/dltbwjspl/video/upload/so_0/Freedom_czroak.jpg" playsinline>
                         <source src="https://res.cloudinary.com/dltbwjspl/video/upload/q_auto,f_auto/Freedom_czroak.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
                     <h3>FREEDOM</h3>
                     <p>Morph Clothing x Galarawan</p>
@@ -1022,9 +1077,11 @@
                 <div class="video-item">
                     <video controls preload="metadata" poster="https://res.cloudinary.com/dltbwjspl/video/upload/so_0/Fear_No_Change_jubjo0.jpg" playsinline>
                         <source src="https://res.cloudinary.com/dltbwjspl/video/upload/q_auto,f_auto/Fear_No_Change_jubjo0.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
                     <h3>FEAR NO CHANGE</h3>
                     <p>Morph Clothing x Galarawan</p>
+                </div>
                 </div>
             </div>
         </div>
@@ -1048,6 +1105,11 @@
                     <h3>Finalist Entry</h3>
                     <p>Our entry for a photography challenge.</p>
                 </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"></video>
+                    <h3>Honorable Mention</h3>
+                    <p>An entry that received special recognition.</p>
+                </div>
             </div>
         </div>
     </main>
@@ -1065,6 +1127,16 @@
                     <h3>Urban Exploration</h3>
                     <p>A series of short films exploring city life.</p>
                 </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"></video>
+                    <h3>Nature's Beauty</h3>
+                    <p>Capturing the silent moments of nature.</p>
+                </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"></video>
+                    <h3>Storytelling through Visuals</h3>
+                    <p>A deep dive into narrative cinematography.</p>
+                </div>
             </div>
         </div>
     </main>
@@ -1081,6 +1153,16 @@
                     <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"></video>
                     <h3>Vibrant Tones</h3>
                     <p>A showcase of colorful and lively color grades.</p>
+                </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"></video>
+                    <h3>Cinematic Look</h3>
+                    <p>Applying a cinematic color grade to a short scene.</p>
+                </div>
+                <div class="video-item">
+                    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"></video>
+                    <h3>Moody Grades</h3>
+                    <p>Dark and dramatic color grading for a serious mood.</p>
                 </div>
             </div>
         </div>
@@ -1100,6 +1182,18 @@
                     </svg>
                     <span>Instagram</span>
                 </a>
+                <a href="https://www.facebook.com/share/1BNPWaTWby/?mibextid=wwXIfr" target="_blank" class="link-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5 2h-11C5.12 2 4 3.12 4 4.5V19.5C4 20.88 5.12 22 6.5 22H11V14H9V11H11V9C11 7.21 12.05 6 14.24 6C15.29 6 16.03 6.08 16.3 6.13V8.12H15.04C14.1 8.12 13.65 8.57 13.65 9.42V11H16.08L15.65 14H13.65V22H17.5C18.88 22 20 20.88 20 19.5V4.5C20 3.12 18.88 2 17.5 2Z" fill="currentColor"/>
+                    </svg>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.tiktok.com/@_throperio?_t=ZS-8zdujbjLvDl&_r=1" target="_blank" class="link-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2H12.997V10H16.495V13H12.997V18.5C12.997 20.433 11.43 22 9.497 22C7.564 22 6 20.433 6 18.5C6 16.567 7.564 15 9.497 15C10.155 15 10.771 15.176 11.31 15.485V13H9.497C8.12 13 7 11.88 7 10.5V10H9.997V2H12ZM12.997 2H16.495V10H12.997V2Z" fill="currentColor"/>
+                    </svg>
+                    <span>TikTok</span>
+                </a>
                 <a href="mailto:wassupkdot880896@gmail.com" class="link-item">
                     <span>wassupkdot880896@gmail.com</span>
                 </a>
@@ -1116,13 +1210,69 @@
                 <p class="profession-caption">Heart of an artist, mind of a creator.</p>
                 <img src="image/1X1.jpg" alt="1X1 image" class="profile-pic">
                 <div class="about-text">
-                    <p>All my life, I’ve been dictated to what I can do, or what I can only do. But I dared to reimagine.</p>
+                    <p>All my life, I’ve been dictated to what I can do, or what I can only do. But I dared to reimagine. I was once just a dreamer, trying to make it in this field. I tried many times — and failed just as much. But those failures taught me something. They shaped who I am today.</p><br>
+                    <p>I dared to dream.<p>
+                    <p>I dared to fail.
+                    <p>I dared to reimagine.</p><br>
+                    <p>I’ve said it once, and I’ll say it again:<p>
+                    <p> “Life is a constant finding of purpose.”</p>
                 </div>
+                
+                <h4 class="section-title">ACHIEVEMENTS</h4>
+<div class="achievements">
+    <ul class="achievements-list">
+        <li>
+            <span>FILM</span> - Champion, Best Director, Best Cinematography<br><br>Role: Director, Editor, Colorist, Sound design, Cinematographer<br>Event: 2024 University Of Saint Louis - Religious Film Festival<br>Film: KUWADRO(St.Philomena) <br><a href="https://www.facebook.com/share/v/1ViK34LfLj/?mibextid=wwXIfr" target="_blank">view here</a>
+        </li>
+        <hr>
+        <li>
+            <span>FILM</span> - Best Cinematography & 2nd Best Film<br><br>Role: Cinematographer<br>Event: 2023 University Of Saint Louis - English Month<br>Film: Stroke of Choices(St.Augustine) <br><a href="https://www.facebook.com/share/1EyehtH4C1/?mibextid=wwXIfr" target="_blank">view here</a>
+        </li>
+        <hr>
+        <li>
+            <span>FILM</span> - Champion<br><br>Role: Cinematographer, Editor<br>Event: 2023 University Of Saint Louis - KWENTO USL by Lente Likha<br>Film: Indak(St.Augustine) <br><a href="https://www.facebook.com/share/17759S62tD/?mibextid=wwXIfr" target="_blank">view here</a>
+        </li>
+        <hr>
+        <li>
+            <span>TEASER</span> - Champion<br><br>Role: Director, Concept writer, Editor, Cinematographer<br>Event: 2024 University Of Saint Louis - Intramurals<br>Team: Valorous Caves of Tasaday(RED) <br><a href="https://www.facebook.com/share/v/1BC77nke1j/?mibextid=wwXIfr" target="_blank">view here</a>
+        </li>
+        <hr>
+        <li>
+            <span>TEASER</span> - Champion<br><br>Role: Editor, Cinematographer<br>Event: 2023 University Of Saint Louis - Intramurals<br>Team: Sirin Keepers of Chrysoprase(GREEN) <br><a href="https://www.facebook.com/share/v/1S5VU7aE9e/?mibextid=wwXIfr" target="_blank">view here</a>
+        </li>
+        <hr>
+        <li>
+            <span>ADVERTISTMENT</span> - Received Highest Grade<br><br>Role: Co-director, Concept, Editor, Cinematographer<br>Subject: Medial Information Literacy<br>Title: Spooky Kupi <br><a href="#" target="_blank">*view here</a>
+        </li>
+        <hr>
+        <li>
+            <span>SHORT DOCUMENTARY</span> - Aetas<br><br>Role: Director, Concept writer, Narrator, Editor, Cinematographer<br><a href="https://www.facebook.com/share/v/1CFbqfX1Mh/?mibextid=wwXIfr" target="_blank">view here</a>
+        </li>
+        <hr>
+        <li>
+            <span>BRAND DEAL</span> - M0RPH<br><br>Role: Director, Concept writer, Editor, Colorist, Cinematographer, Model<br>Package: All-in Package<br><a href="#" target="_blank">*view here</a>
+        </li>
+        <hr>
+        <li>
+            <span>POSTER</span> - 2nd Runner-Up<br><br>Role: Designer<br>Event: 2024 University Of Saint Louis - Religious Film Festival<br>Film: KUWADRO(St.Philomena) <br><a href="https://www.facebook.com/photo.php?fbid=425477833368774&set=a.172997461950147&type=3&mibextid=wwXIfr" target="_blank">view here</a>
+        </li>
+        <hr>
+        <li>
+            <span>POSTER</span> <br><br>Role: Designer<br>Event: 2023 University Of Saint Louis - KWENTO USL by Lente Likha<br>Film: INDAK(St.Augustine) <br><a href="https://www.facebook.com/share/1FSZZncbGF/?mibextid=wwXIfr" target="_blank">view here</a>
+        </li>
+        <hr>
+        <li>
+            <span>POSTER & INFORGRAPHICS</span> - Received High Grades<br><br>Role: Owner/Designer<br>Subject: Educational Projects 2024-2025<br><a href="#" target="_blank">view here</a>
+        </li>
+    </ul>
+</div>
+                
                 <h4 class="section-title">SKILLS</h4>
                 <div class="skills">
                     <ul>
                         <li>Davinci Resolve</li>
                         <li>Photoshop</li>
+                        <li>Canva</li>
                         <li>AI tools</li>
                     </ul>
                 </div>
@@ -1131,6 +1281,7 @@
     </div>
 
     <script>
+        // Data for the carousel cards
         const carouselData = [
             { id: 0, title: "BRAND DEALS", caption: "Collaborative projects with various clients.", bg: "image/1.webp", href: "#brand-deals-page" },
             { id: 1, title: "COMPETITION", caption: "My award-winning and contest entries.", bg: "image/2.webp", href: "#competition-page" },
@@ -1143,19 +1294,28 @@
         const carouselTrack = document.getElementById('works-carousel-track');
         const worksDots = document.getElementById('works-dots');
         
+        // Function to update all card positions and the background
         function updateCarousel(index) {
             const cards = document.querySelectorAll('.works-card');
+            
+            // Calculate which card is at which position (circular logic)
             cards.forEach((card, i) => {
                 const total = carouselData.length;
                 let diff = (i - index + total) % total;
-                if (diff > total / 2) diff -= total;
+                
+                // Adjust diff for central positioning (0 = center)
+                if (diff > total / 2) {
+                    diff -= total; // Allows for negative values like -1, -2 for left side
+                }
 
                 card.classList.remove('center', 'left-1', 'left-2', 'left-3', 'right-1', 'right-2', 'right-3');
-                card.onclick = null;
-                card.style.pointerEvents = 'none';
+                card.onclick = null; // Remove previous click handlers
+                card.style.pointerEvents = 'none'; // Disable clicking by default
 
+                // Apply classes based on position relative to the center index
                 if (diff === 0) {
                     card.classList.add('center');
+                    // Only the center card is clickable for navigation
                     card.style.pointerEvents = 'auto';
                     card.onclick = (e) => {
                         e.preventDefault();
@@ -1168,15 +1328,32 @@
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         }
                     };
-                } else if (diff === -1) card.classList.add('left-1');
-                else if (diff === 1) card.classList.add('right-1');
+                } else if (diff === -1) {
+                    card.classList.add('left-1');
+                } else if (diff === -2) {
+                    card.classList.add('left-2');
+                } else if (diff <= -3) {
+                    card.classList.add('left-3');
+                } else if (diff === 1) {
+                    card.classList.add('right-1');
+                } else if (diff === 2) {
+                    card.classList.add('right-2');
+                } else if (diff >= 3) {
+                    card.classList.add('right-3');
+                }
             });
 
+            // Update Background Image
             const selectedData = carouselData[index];
-            if (selectedData) worksBg.style.backgroundImage = `url('${selectedData.bg}')`;
+            if (selectedData) {
+                worksBg.style.backgroundImage = `url('${selectedData.bg}')`;
+            }
+            
+            // Update dots
             updateDots(index);
         }
 
+        // Function to create card HTML elements
         function createCards() {
             carouselTrack.innerHTML = '';
             worksDots.innerHTML = '';
@@ -1184,9 +1361,20 @@
                  const card = document.createElement('a');
                  card.href = item.href;
                  card.className = 'works-card';
+                 card.setAttribute('data-title', item.title);
+                 card.setAttribute('data-caption', item.caption);
+                 card.setAttribute('data-bg', item.bg);
                  card.style.backgroundImage = `url('${item.bg}')`;
-                 card.innerHTML = `<div class="card-overlay"></div><div class="card-text"><h3>${item.title}</h3><p>${item.caption}</p></div>`;
+                 
+                 card.innerHTML = `
+                    <div class="card-overlay"></div>
+                    <div class="card-text">
+                       <h3>${item.title}</h3>
+                       <p>${item.caption}</p>
+                    </div>
+                 `;
                  carouselTrack.appendChild(card);
+                 
                  const dot = document.createElement('div');
                  dot.className = 'dot';
                  dot.onclick = () => { currentIndex = index; updateCarousel(currentIndex); };
@@ -1194,24 +1382,83 @@
             });
         }
         
+        // Function to update the dot navigation
         function updateDots(index) {
             const dots = worksDots.querySelectorAll('.dot');
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
         }
 
+        // Function for arrow navigation (Handles circular movement)
         function navigateCarousel(direction) {
             currentIndex = (currentIndex + direction + carouselData.length) % carouselData.length;
             updateCarousel(currentIndex);
         }
         
+        // Attach the global function for use in the HTML buttons
         window.navigateCarousel = navigateCarousel;
         
-        document.addEventListener('DOMContentLoaded', () => {
-             document.getElementById('home-page').style.display = 'block';
-             createCards();
-             updateCarousel(currentIndex);
+        // Custom function for slow, smooth scrolling
+        function smoothScrollTo(targetElement, duration) {
+            const startPosition = window.pageYOffset;
+            const targetPosition = targetElement.offsetTop;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            // Easing function for a more natural feel
+            function easeInOutCubic(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t * t + b;
+                t -= 2;
+                return c / 2 * (t * t * t + 2) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // Smooth page transitions and navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const currentPage = document.querySelector('main:not([style*="display: none"])');
+                
+                // Only prevent default if it's not a carousel card click handler (which handles its own page change)
+                if (!this.classList.contains('works-card')) {
+                    e.preventDefault();
+                }
+
+                if (targetElement && currentPage) {
+                    // Check if the target is a different main page.
+                    if (targetElement.tagName === 'MAIN' && targetElement !== currentPage) {
+                        currentPage.style.display = 'none';
+                        targetElement.style.display = 'block';
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        // Otherwise, just smooth scroll within the current page.
+                        smoothScrollTo(targetElement, 1000);
+                    }
+                }
+            });
         });
 
+        // Show home page on initial load
+        document.addEventListener('DOMContentLoaded', () => {
+             document.getElementById('home-page').style.display = 'block';
+             createCards(); // Initialize cards
+             updateCarousel(currentIndex); // Set initial state
+        });
+
+        // Pop-up Modal Functionality
         function openModal(modalType) {
             const modal = document.getElementById(modalType + '-modal');
             if (modal) {
@@ -1227,6 +1474,20 @@
             }
         }
 
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const contactModal = document.getElementById('contact-modal');
+            const aboutModal = document.getElementById('about-modal');
+
+            if (event.target == contactModal) {
+                closeModal('contact');
+            }
+            if (event.target == aboutModal) {
+                closeModal('about');
+            }
+        }
+
+        // Hamburger menu functionality
         function toggleMenu() {
             const menu = document.getElementById('menu-list');
             const hamburger = document.querySelector('.hamburger-menu');
@@ -1236,3 +1497,18 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

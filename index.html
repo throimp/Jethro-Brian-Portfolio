@@ -178,9 +178,11 @@
             align-items: center;
             padding: 4rem 0;
             gap: 2rem;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('image/4.webp');
+            /* Gradient added to fade the left side of the background image */
+            background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%), url('image/4.webp');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
         }
 
         .hero-image-container {
@@ -261,13 +263,11 @@
             background-color: var(--white);
         }
 
-        /* --- Works Menu Section - REVISED STYLING --- */
+        /* --- Works Menu Section --- */
         .works-menu-section {
             position: relative; 
-            /* Min-height to ensure space for the carousel and content */
             min-height: 95vh; 
             padding-top: 0; 
-            /* Added padding-bottom for better mobile spacing */
             padding-bottom: 5rem; 
             display: flex;
             flex-direction: column;
@@ -284,9 +284,8 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            /* SLOWER TRANSITION */
             transition: background-image 1.0s ease-in-out; 
-            filter: blur(5px) brightness(0.4); /* Stronger blur for background */
+            filter: blur(5px) brightness(0.4);
             z-index: 1;
         }
 
@@ -302,14 +301,13 @@
             padding-top: 2rem;
         }
         
-        /* Text Constraint Change for Margin/Padding */
         .works-text-content {
             text-align: center;
             margin-top: 2rem;
-            max-width: 800px; /* Constrain text width */
-            width: 90%; /* Ensure it's never full width */
-            margin-left: auto; /* Center it */
-            margin-right: auto; /* Center it */
+            max-width: 800px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .works-text-content h2 {
@@ -328,7 +326,6 @@
             margin-right: auto;
         }
 
-        /* Carousel Structure */
         .works-card-carousel-wrapper {
             flex-grow: 1;
             width: 100%;
@@ -350,16 +347,14 @@
             align-items: center;
         }
         
-        /* Individual Card (Button) Styling */
         .works-card {
             position: absolute;
-            width: 220px; /* Slightly smaller */
-            height: 320px; /* Slightly smaller */
+            width: 220px;
+            height: 320px;
             background-size: cover;
             background-position: center;
-            border-radius: 15px; /* More prominent rounding (less rectangle) */
+            border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            /* REVISED: Smoother/Slightly faster transition for a better swipe feel */
             transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease;
             transform-style: preserve-3d;
             cursor: pointer;
@@ -373,19 +368,18 @@
             text-decoration: none;
             background-color: var(--black);
             overflow: hidden;
-            pointer-events: none; /* Default: not clickable */
+            pointer-events: none;
         }
 
         .works-card.center {
-            transform: translateX(0) scale(1.15); /* Center card is larger */
+            transform: translateX(0) scale(1.15);
             opacity: 1;
             z-index: 10;
             background-color: var(--black); 
-            border: 3px solid var(--yellow); /* Thicker border on selected */
-            pointer-events: auto; /* Only center card is clickable */
+            border: 3px solid var(--yellow);
+            pointer-events: auto;
         }
         
-        优化
         .card-overlay {
             position: absolute;
             top: 0;
@@ -401,7 +395,6 @@
             transition: opacity 0.6s ease;
         }
 
-        /* Center Card Text Style */
         .works-card.center .card-text h3 {
              font-size: 1.8rem;
              color: var(--yellow);
@@ -415,7 +408,6 @@
              color: var(--light-gray);
         }
         
-        /* Side Card Transforms (Shadow/Stacking Effect) */
         .works-card.left-3 {
             transform: translate3d(-200%, 0, -400px) rotateY(15deg) scale(0.6);
             opacity: 0;
@@ -430,14 +422,14 @@
             transform: translate3d(-70%, 0, -100px) rotateY(5deg) scale(0.9); 
             opacity: 0.8;
             z-index: 3;
-            box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+            box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5);
         }
         
         .works-card.right-1 {
             transform: translate3d(70%, 0, -100px) rotateY(-5deg) scale(0.9); 
             opacity: 0.8;
             z-index: 3;
-            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
         }
         .works-card.right-2 {
             transform: translate3d(150%, 0, -250px) rotateY(-10deg) scale(0.75);
@@ -450,7 +442,6 @@
             z-index: 1;
         }
         
-        /* Hide text on side cards */
         .works-card:not(.center) .card-text {
             opacity: 0;
         }
@@ -460,11 +451,9 @@
         }
         
         .works-card.center .card-overlay {
-            /* Make overlay subtle on center card */
             background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%);
         }
         
-        /* Navigation Arrows */
         .nav-arrow {
             position: absolute;
             top: 50%;
@@ -520,8 +509,6 @@
             box-shadow: 0 0 5px var(--white);
         }
 
-
-        /* --- Gallery Section --- */
         .gallery-section {
             padding: 4rem 0;
             text-align: center;
@@ -542,7 +529,6 @@
             border-radius: 5px;
         }
 
-        /* --- Pages for Buttons --- */
         .page-content {
             padding: 4rem 0;
             min-height: 100vh;
@@ -635,7 +621,6 @@
             color: var(--light-gray);
         }
 
-        /* --- Pop-up Modals (Contact & About) --- */
         .modal {
             position: fixed;
             top: 0;
@@ -727,7 +712,6 @@
             color: var(--yellow);
         }
         
-        /* New styles for the requested About Me layout */
         .about-content h3.about-title {
             color: var(--yellow);
             font-size: 2.5rem;
@@ -827,8 +811,6 @@
             margin-top: 2rem;
         }
 
-
-        /* SVG icon styles */
         .icon {
             width: 24px;
             height: 24px;
@@ -894,8 +876,12 @@
             }
         }
 
-        /* Mobile Adjustments for Carousel */
+        /* --- Mobile Adjustments --- */
         @media (max-width: 500px) {
+            .hero-section {
+                /* background-size reduced slightly to zoom out a little on mobile */
+                background-size: 110%;
+            }
             .works-card {
                 width: 180px;
                 height: 270px;
@@ -1311,7 +1297,6 @@
     </div>
 
     <script>
-        // Data for the carousel cards
         const carouselData = [
             { id: 0, title: "BRAND DEALS", caption: "Collaborative projects with various clients.", bg: "image/1.webp", href: "#brand-deals-page" },
             { id: 1, title: "COMPETITION", caption: "My award-winning and contest entries.", bg: "image/2.webp", href: "#competition-page" },
@@ -1324,28 +1309,23 @@
         const carouselTrack = document.getElementById('works-carousel-track');
         const worksDots = document.getElementById('works-dots');
         
-        // Function to update all card positions and the background
         function updateCarousel(index) {
             const cards = document.querySelectorAll('.works-card');
             
-            // Calculate which card is at which position (circular logic)
             cards.forEach((card, i) => {
                 const total = carouselData.length;
                 let diff = (i - index + total) % total;
                 
-                // Adjust diff for central positioning (0 = center)
                 if (diff > total / 2) {
-                    diff -= total; // Allows for negative values like -1, -2 for left side
+                    diff -= total;
                 }
 
                 card.classList.remove('center', 'left-1', 'left-2', 'left-3', 'right-1', 'right-2', 'right-3');
-                card.onclick = null; // Remove previous click handlers
-                card.style.pointerEvents = 'none'; // Disable clicking by default
+                card.onclick = null;
+                card.style.pointerEvents = 'none';
 
-                // Apply classes based on position relative to the center index
                 if (diff === 0) {
                     card.classList.add('center');
-                    // Only the center card is clickable for navigation
                     card.style.pointerEvents = 'auto';
                     card.onclick = (e) => {
                         e.preventDefault();
@@ -1373,17 +1353,14 @@
                 }
             });
 
-            // Update Background Image
             const selectedData = carouselData[index];
             if (selectedData) {
                 worksBg.style.backgroundImage = `url('${selectedData.bg}')`;
             }
             
-            // Update dots
             updateDots(index);
         }
 
-        // Function to create card HTML elements
         function createCards() {
             carouselTrack.innerHTML = '';
             worksDots.innerHTML = '';
@@ -1412,7 +1389,6 @@
             });
         }
         
-        // Function to update the dot navigation
         function updateDots(index) {
             const dots = worksDots.querySelectorAll('.dot');
             dots.forEach((dot, i) => {
@@ -1420,16 +1396,13 @@
             });
         }
 
-        // Function for arrow navigation (Handles circular movement)
         function navigateCarousel(direction) {
             currentIndex = (currentIndex + direction + carouselData.length) % carouselData.length;
             updateCarousel(currentIndex);
         }
         
-        // Attach the global function for use in the HTML buttons
         window.navigateCarousel = navigateCarousel;
         
-        // Custom function for slow, smooth scrolling
         function smoothScrollTo(targetElement, duration) {
             const startPosition = window.pageYOffset;
             const targetPosition = targetElement.offsetTop;
@@ -1444,7 +1417,6 @@
                 if (timeElapsed < duration) requestAnimationFrame(animation);
             }
 
-            // Easing function for a more natural feel
             function easeInOutCubic(t, b, c, d) {
                 t /= d / 2;
                 if (t < 1) return c / 2 * t * t * t + b;
@@ -1455,40 +1427,34 @@
             requestAnimationFrame(animation);
         }
 
-        // Smooth page transitions and navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 const currentPage = document.querySelector('main:not([style*="display: none"])');
                 
-                // Only prevent default if it's not a carousel card click handler (which handles its own page change)
                 if (!this.classList.contains('works-card')) {
                     e.preventDefault();
                 }
 
                 if (targetElement && currentPage) {
-                    // Check if the target is a different main page.
                     if (targetElement.tagName === 'MAIN' && targetElement !== currentPage) {
                         currentPage.style.display = 'none';
                         targetElement.style.display = 'block';
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     } else {
-                        // Otherwise, just smooth scroll within the current page.
                         smoothScrollTo(targetElement, 1000);
                     }
                 }
             });
         });
 
-        // Show home page on initial load
         document.addEventListener('DOMContentLoaded', () => {
              document.getElementById('home-page').style.display = 'block';
-             createCards(); // Initialize cards
-             updateCarousel(currentIndex); // Set initial state
+             createCards();
+             updateCarousel(currentIndex);
         });
 
-        // Pop-up Modal Functionality
         function openModal(modalType) {
             const modal = document.getElementById(modalType + '-modal');
             if (modal) {
@@ -1504,7 +1470,6 @@
             }
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             const contactModal = document.getElementById('contact-modal');
             const aboutModal = document.getElementById('about-modal');
@@ -1517,7 +1482,6 @@
             }
         }
 
-        // Hamburger menu functionality
         function toggleMenu() {
             const menu = document.getElementById('menu-list');
             const hamburger = document.querySelector('.hamburger-menu');

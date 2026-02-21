@@ -499,12 +499,13 @@
         /* --- Mobile Adjustments REVISED --- */
         @media (max-width: 500px) {
             .hero-section {
-                /* Background: 20% fade from top, 40% transparency (60% black), 85% fill right */
-                background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 20%),
-                            linear-gradient(to right, rgba(0,0,0,1) 15%, rgba(0,0,0,0.6) 100%),
-                            url('image/4.webp');
+                /* REVISED: Background fills right 85%, Fade 20% from top, 40% Transparency (0.6 black overlay) */
+                background: 
+                    linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 20%),
+                    linear-gradient(to right, rgba(0,0,0,1) 15%, rgba(0,0,0,0) 85%),
+                    url('image/4.webp');
                 background-size: cover;
-                background-position: right center;
+                background-position: right center; /* Anchored right to show lamp/pictures/drinks */
                 background-attachment: scroll; 
                 padding: 3rem 0;
             }

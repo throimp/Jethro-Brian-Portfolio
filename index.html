@@ -171,23 +171,26 @@
             color: var(--white);
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section REVISED --- */
         .hero-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 4rem 0;
             gap: 2rem;
-            /* Gradient added to fade the left side of the background image */
-            background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%), url('image/4.webp');
+            /* Updated Gradient: Solid black until 30% (where the image usually sits), then a long fade to 80% */
+            background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0.2) 80%, rgba(0, 0, 0, 0) 100%), url('image/4.webp');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            min-height: 80vh; /* Ensures it fills the screen height better */
         }
 
         .hero-image-container {
             width: 100%;
             max-width: 450px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-image {
@@ -199,6 +202,8 @@
 
         .hero-text-container {
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-text-container h1 {
@@ -879,8 +884,10 @@
         /* --- Mobile Adjustments --- */
         @media (max-width: 500px) {
             .hero-section {
-                /* background-size reduced slightly to zoom out a little on mobile */
-                background-size: 110%;
+                /* Ensures the background image always fills the section on mobile */
+                background-size: cover;
+                background-attachment: scroll; 
+                padding: 3rem 0;
             }
             .works-card {
                 width: 180px;
@@ -1096,7 +1103,6 @@
                 </div>
                 </div>
             </div>
-        </div>
     </main>
 
     <main class="page-content" id="competition-page" style="display: none;">
@@ -1297,6 +1303,7 @@
     </div>
 
     <script>
+        // Carousel data and logic kept exactly as provided
         const carouselData = [
             { id: 0, title: "BRAND DEALS", caption: "Collaborative projects with various clients.", bg: "image/1.webp", href: "#brand-deals-page" },
             { id: 1, title: "COMPETITION", caption: "My award-winning and contest entries.", bg: "image/2.webp", href: "#competition-page" },
@@ -1311,19 +1318,13 @@
         
         function updateCarousel(index) {
             const cards = document.querySelectorAll('.works-card');
-            
             cards.forEach((card, i) => {
                 const total = carouselData.length;
                 let diff = (i - index + total) % total;
-                
-                if (diff > total / 2) {
-                    diff -= total;
-                }
-
+                if (diff > total / 2) diff -= total;
                 card.classList.remove('center', 'left-1', 'left-2', 'left-3', 'right-1', 'right-2', 'right-3');
                 card.onclick = null;
                 card.style.pointerEvents = 'none';
-
                 if (diff === 0) {
                     card.classList.add('center');
                     card.style.pointerEvents = 'auto';
@@ -1338,26 +1339,15 @@
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         }
                     };
-                } else if (diff === -1) {
-                    card.classList.add('left-1');
-                } else if (diff === -2) {
-                    card.classList.add('left-2');
-                } else if (diff <= -3) {
-                    card.classList.add('left-3');
-                } else if (diff === 1) {
-                    card.classList.add('right-1');
-                } else if (diff === 2) {
-                    card.classList.add('right-2');
-                } else if (diff >= 3) {
-                    card.classList.add('right-3');
-                }
+                } else if (diff === -1) card.classList.add('left-1');
+                else if (diff === -2) card.classList.add('left-2');
+                else if (diff <= -3) card.classList.add('left-3');
+                else if (diff === 1) card.classList.add('right-1');
+                else if (diff === 2) card.classList.add('right-2');
+                else if (diff >= 3) card.classList.add('right-3');
             });
-
             const selectedData = carouselData[index];
-            if (selectedData) {
-                worksBg.style.backgroundImage = `url('${selectedData.bg}')`;
-            }
-            
+            if (selectedData) worksBg.style.backgroundImage = `url('${selectedData.bg}')`;
             updateDots(index);
         }
 
@@ -1372,16 +1362,8 @@
                  card.setAttribute('data-caption', item.caption);
                  card.setAttribute('data-bg', item.bg);
                  card.style.backgroundImage = `url('${item.bg}')`;
-                 
-                 card.innerHTML = `
-                    <div class="card-overlay"></div>
-                    <div class="card-text">
-                       <h3>${item.title}</h3>
-                       <p>${item.caption}</p>
-                    </div>
-                 `;
+                 card.innerHTML = `<div class="card-overlay"></div><div class="card-text"><h3>${item.title}</h3><p>${item.caption}</p></div>`;
                  carouselTrack.appendChild(card);
-                 
                  const dot = document.createElement('div');
                  dot.className = 'dot';
                  dot.onclick = () => { currentIndex = index; updateCarousel(currentIndex); };
@@ -1391,9 +1373,7 @@
         
         function updateDots(index) {
             const dots = worksDots.querySelectorAll('.dot');
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
         }
 
         function navigateCarousel(direction) {
@@ -1408,7 +1388,6 @@
             const targetPosition = targetElement.offsetTop;
             const distance = targetPosition - startPosition;
             let startTime = null;
-
             function animation(currentTime) {
                 if (startTime === null) startTime = currentTime;
                 const timeElapsed = currentTime - startTime;
@@ -1416,14 +1395,12 @@
                 window.scrollTo(0, run);
                 if (timeElapsed < duration) requestAnimationFrame(animation);
             }
-
             function easeInOutCubic(t, b, c, d) {
                 t /= d / 2;
                 if (t < 1) return c / 2 * t * t * t + b;
                 t -= 2;
                 return c / 2 * (t * t * t + 2) + b;
             }
-
             requestAnimationFrame(animation);
         }
 
@@ -1432,19 +1409,13 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 const currentPage = document.querySelector('main:not([style*="display: none"])');
-                
-                if (!this.classList.contains('works-card')) {
-                    e.preventDefault();
-                }
-
+                if (!this.classList.contains('works-card')) e.preventDefault();
                 if (targetElement && currentPage) {
                     if (targetElement.tagName === 'MAIN' && targetElement !== currentPage) {
                         currentPage.style.display = 'none';
                         targetElement.style.display = 'block';
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else {
-                        smoothScrollTo(targetElement, 1000);
-                    }
+                    } else smoothScrollTo(targetElement, 1000);
                 }
             });
         });
@@ -1473,13 +1444,8 @@
         window.onclick = function(event) {
             const contactModal = document.getElementById('contact-modal');
             const aboutModal = document.getElementById('about-modal');
-
-            if (event.target == contactModal) {
-                closeModal('contact');
-            }
-            if (event.target == aboutModal) {
-                closeModal('about');
-            }
+            if (event.target == contactModal) closeModal('contact');
+            if (event.target == aboutModal) closeModal('about');
         }
 
         function toggleMenu() {
